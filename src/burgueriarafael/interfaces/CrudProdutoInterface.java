@@ -6,6 +6,7 @@
 package burgueriarafael.interfaces;
 
 import burgueriarafael.basica.Produto;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -14,12 +15,12 @@ import java.util.List;
  */
 public interface CrudProdutoInterface {
     
-    public boolean Insert(Produto produto) throws Exception;
+    public boolean Insert(Produto produto) throws SQLException, Exception;
     
-    public boolean Update(Produto produto) throws Exception;
+    public boolean Update(Produto produto) throws SQLException, Exception;
     
-    public boolean Delete(Produto produto) throws Exception;
+    public boolean Delete(Produto produto) throws SQLException, Exception;
     
-    public List<Produto> select() throws Exception;
+    public List<Produto> select() throws SQLException, Exception;
     
 }

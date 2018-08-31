@@ -6,6 +6,7 @@
 package burgueriarafael.interfaces;
 
 import burgueriarafael.basica.NotaFiscal;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -14,11 +15,11 @@ import java.util.List;
  */
 public interface CrudNotaFiscalInterface {
  
-    public boolean Insert(NotaFiscal notafiscal) throws Exception;
+    public boolean Insert(NotaFiscal notafiscal) throws SQLException, Exception;
     
-    public boolean Update(NotaFiscal notafiscal) throws Exception;
+    public boolean Update(NotaFiscal notafiscal) throws SQLException, Exception;
     
-    public boolean Delete(NotaFiscal notafiscal) throws Exception;
+    public boolean Delete(NotaFiscal notafiscal) throws SQLException, Exception;
     
-    public List<NotaFiscal> select() throws Exception;
+    public List<NotaFiscal> select() throws SQLException, Exception;
 }

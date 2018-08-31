@@ -6,6 +6,7 @@
 package burgueriarafael.interfaces;
 
 import burgueriarafael.basica.Funcionario;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -14,12 +15,12 @@ import java.util.List;
  */
 public interface CrudFuncionarioInterface {
     
-    public boolean Insert(Funcionario funcionario) throws Exception;
+    public boolean Insert(Funcionario funcionario) throws SQLException, Exception;
     
-    public boolean Update(Funcionario funcionario) throws Exception;
+    public boolean Update(Funcionario funcionario) throws SQLException, Exception;
     
-    public boolean Delete(Funcionario funcionario) throws Exception;
+    public boolean Delete(Funcionario funcionario) throws SQLException, Exception;
     
-    public List<Funcionario> select() throws Exception;
+    public List<Funcionario> select() throws SQLException, Exception;
     
 }

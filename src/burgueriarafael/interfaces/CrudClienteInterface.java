@@ -6,6 +6,7 @@
 package burgueriarafael.interfaces;
 
 import burgueriarafael.basica.Cliente;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -14,11 +15,11 @@ import java.util.List;
  */
 public interface CrudClienteInterface {
     
-    public boolean Insert(Cliente Cliente) throws Exception;
+    public boolean Insert(Cliente Cliente) throws SQLException, Exception;
     
-    public boolean Update(Cliente cliente) throws Exception;
+    public boolean Update(Cliente cliente) throws SQLException, Exception;
     
-    public boolean Delete(Cliente cliente) throws Exception;
+    public boolean Delete(Cliente cliente) throws SQLException, Exception;
     
-    public List<Cliente> select() throws Exception;
+    public List<Cliente> select() throws SQLException, Exception;
 }
