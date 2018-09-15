@@ -5,11 +5,12 @@
  */
 package burgueriarafael.util.banco;
 
-import burgueriarafael.interfaces.ConexaoInterface;
-import com.mysql.jdbc.Connection;
+import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import burgueriarafael.interfaces.ConexaoInterface;
+import java.sql.PreparedStatement;
 
 /**
  *
@@ -17,21 +18,21 @@ import java.util.ResourceBundle;
  */
 public class Conexao implements ConexaoInterface{
 
-    private  String  URL_BD;
-    private  String  USUARIO_BD;
-    private  String  SENHA_BD;
+    private  final String  URL_BD;
+    private  final String  USUARIO_BD;
+    private  final String  SENHA_BD;
     private static Conexao instancia;
     private Connection conexaoBd;
+            
     
     
     
    
       public Conexao() {
-        ResourceBundle rb = ResourceBundle.getBundle("BurgueriaRafa.util.banco.configBD");
-        URL_BD = rb.getString("URL");
-        SENHA_BD = rb.getString("SENHA");
-        USUARIO_BD = rb.getString("usuario");
-        
+        //ResourceBundle rb = ResourceBundle.getBundle("burgueriarafael.util.banco.configDB");
+        URL_BD = "jdbc:mysql://localhost:3306/teste";
+        USUARIO_BD = "root";
+        SENHA_BD = ""; 
     }
 
     public static Conexao getInstance(){
@@ -41,23 +42,26 @@ public class Conexao implements ConexaoInterface{
         return instancia;
     }
 
+    
     @Override
     public Connection Conectar() throws SQLException {
-          //zerando a variavel de conexao
+        
+        //zerando a variavel de conexao
         conexaoBd = null;
         //Estabelecendo a conexao como banco de dados
-        conexaoBd = (Connection) DriverManager.getConnection(URL_BD, USUARIO_BD, SENHA_BD);
+        conexaoBd = DriverManager.getConnection(URL_BD, USUARIO_BD, SENHA_BD);
         
         return conexaoBd;
     }
 
     @Override
     public void Desconectar() throws SQLException {
-        if(conexaoBd != null){
+        if(conexaoBd!=null){
             conexaoBd.close();
         }
     }
-    
+
+   
     
     
 }
