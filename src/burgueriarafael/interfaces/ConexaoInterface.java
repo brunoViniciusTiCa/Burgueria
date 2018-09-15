@@ -5,7 +5,8 @@
  */
 package burgueriarafael.interfaces;
 
-import com.mysql.jdbc.Connection;
+
+import java.sql.Connection;
 import java.sql.SQLException;
 
 /**
@@ -13,7 +14,8 @@ import java.sql.SQLException;
  * @author BrunoTiCaVini
  */
 public interface ConexaoInterface {
-    public Connection Conectar()throws SQLException;  
-    public void Desconectar()throws SQLException;
+    
+    public Connection Conectar() throws SQLException ;
+    public void Desconectar() throws SQLException ;
     
 }

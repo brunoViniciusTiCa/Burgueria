@@ -8,12 +8,12 @@ package burgueriarafael.repositorio;
 import burgueriarafael.basica.Funcionario;
 import burgueriarafael.interfaces.CrudFuncionarioInterface;
 import burgueriarafael.util.banco.Conexao;
-import com.mysql.jdbc.Connection;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.List;
+import java.sql.SQLException;
 import java.util.ArrayList;
-       
+import java.util.List;
 
 /**
  *
@@ -24,21 +24,21 @@ public class FuncionarioRepositorio implements CrudFuncionarioInterface{
      Conexao conexao = new Conexao();
 
     @Override
-    public boolean Insert(Funcionario funcionario) throws Exception {
+    public boolean insert(Funcionario funcionario) throws SQLException {
         conexao = Conexao.getInstance();
-        
         Connection connection = conexao.Conectar();
         
-        String sql = "INSERT INTO Funcionario (idFuncionario,cpfFuncionario,telefoneFuncionario,enderecoFuncionario,nomeFuncionario,sexoFuncionario VALUES(?,?,?,?,?,?))";
+        String sql = "INSERT INTO Funcionario (cpfFuncionario,telefoneFuncionario,enderecoFuncionario,nomeFuncionario,sexoFuncionario)"
+                + " VALUES(?,?,?,?,?)";
         
         PreparedStatement preparedStatement = connection.prepareStatement(sql); 
        
-        preparedStatement.setInt(1, funcionario.getIdFuncionario());
-        preparedStatement.setString(2 , funcionario.getCpfFuncionario());
-        preparedStatement.setString(3, funcionario.getTelefoneFuncionario());
-        preparedStatement.setString(4, funcionario.getEnderecoFuncionario());
-        preparedStatement.setString(5, funcionario.getNomeFuncionario());
-        preparedStatement.setString(6, funcionario.getSexoFuncionario());
+        
+        preparedStatement.setString(1 , funcionario.getCpfFuncionario());
+        preparedStatement.setString(2, funcionario.getTelefoneFuncionario());
+        preparedStatement.setString(3, funcionario.getEnderecoFuncionario());
+        preparedStatement.setString(4, funcionario.getNomeFuncionario());
+        preparedStatement.setString(5, funcionario.getSexoFuncionario());
 
         preparedStatement.executeUpdate();        
         
@@ -48,20 +48,21 @@ public class FuncionarioRepositorio implements CrudFuncionarioInterface{
     }
 
     @Override
-    public boolean Update(Funcionario funcionario) throws Exception {
+    public boolean update(Funcionario funcionario) throws SQLException {
         
-        conexao.Conectar();
+        conexao = Conexao.getInstance();
         
-        Connection connection = conexao.Conectar();
+        Connection connection =  conexao.Conectar();
         
-        String sql = "UPDATE funcionario set idFuncionario = ?"
-                + "telefoneFuncionario = ?, enderecoFuncionario = ?)";
+        String sql = "UPDATE funcionario set telefoneFuncionario = ?, enderecoFuncionario = ? "
+                + "WHERE idFuncionario = ? ";
         
         PreparedStatement preparedstatemant = connection.prepareStatement(sql);
         
-        preparedstatemant.setInt(1, funcionario.getIdFuncionario());
-        preparedstatemant.setString(2, funcionario.getTelefoneFuncionario());
-        preparedstatemant.setString(3, funcionario.getEnderecoFuncionario());
+        
+        preparedstatemant.setString(1, funcionario.getTelefoneFuncionario());
+        preparedstatemant.setString(2, funcionario.getEnderecoFuncionario());
+        preparedstatemant.setInt   (3, funcionario.getIdFuncionario());
         
         preparedstatemant.executeUpdate();
         
@@ -71,13 +72,13 @@ public class FuncionarioRepositorio implements CrudFuncionarioInterface{
     }
 
     @Override
-    public boolean Delete(Funcionario funcionario) throws Exception {
+    public boolean delete(Funcionario funcionario) throws SQLException {
        
         conexao.Conectar();
         
-        Connection connection = conexao.Conectar();
+        Connection connection =  conexao.Conectar();
         
-        String sql = "DELETE funcionario Where idFuncionario = ?";
+        String sql = "DELETE FROM funcionario WHERE idFuncionario = ?";
         
         PreparedStatement preparedstatement = connection.prepareStatement(sql);
         
@@ -91,7 +92,7 @@ public class FuncionarioRepositorio implements CrudFuncionarioInterface{
     }
 
     @Override
-    public List<Funcionario> select() throws Exception {
+    public List<Funcionario> select() throws SQLException {
         
         List<Funcionario> Funcionarios = new ArrayList<>();
        

@@ -15,11 +15,11 @@ import java.util.List;
  */
 public interface CrudFuncionarioInterface {
     
-    public boolean Insert(Funcionario funcionario) throws SQLException, Exception;
+    public boolean insert(Funcionario funcionario) throws SQLException, Exception;
     
-    public boolean Update(Funcionario funcionario) throws SQLException, Exception;
+    public boolean update(Funcionario funcionario) throws SQLException, Exception;
     
-    public boolean Delete(Funcionario funcionario) throws SQLException, Exception;
+    public boolean delete(Funcionario funcionario) throws SQLException, Exception;
     
     public List<Funcionario> select() throws SQLException, Exception;
     

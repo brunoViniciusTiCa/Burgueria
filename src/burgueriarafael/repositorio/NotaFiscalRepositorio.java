@@ -8,12 +8,12 @@ package burgueriarafael.repositorio;
 import burgueriarafael.basica.NotaFiscal;
 import burgueriarafael.interfaces.CrudNotaFiscalInterface;
 import burgueriarafael.util.banco.Conexao;
-import com.mysql.jdbc.Connection;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 /**
  *
  * @author BrunoTiCaVini
@@ -23,11 +23,11 @@ public class NotaFiscalRepositorio implements CrudNotaFiscalInterface{
       Conexao conexao = new Conexao();
        
     @Override
-    public boolean Insert(NotaFiscal notafiscal) throws Exception {
+    public boolean insert(NotaFiscal notafiscal) throws SQLException {
         
         conexao = Conexao.getInstance();
         
-        Connection connection = conexao.Conectar();
+        Connection connection = (Connection) conexao.Conectar();
         
        String sql = "INSERT INTO NotaFiscal(idNf, dataNF, horaNF, idFuncionario,idCliente,idPedido,idProduto)"
                + "VALUES (?,?,?,?,?,?,?)";
@@ -48,11 +48,11 @@ public class NotaFiscalRepositorio implements CrudNotaFiscalInterface{
     }
 
     @Override
-    public boolean Update(NotaFiscal notafiscal) throws Exception {
+    public boolean update(NotaFiscal notafiscal) throws SQLException {
         
         conexao = Conexao.getInstance();
         
-        Connection connection = conexao.Conectar();
+        Connection connection = (Connection) conexao.Conectar();
         // funcionario, cliente, produto, pedido
         String sql = "UPDATE nota fiscal set idNf = ?, funcionario = ?, cliente = ? , produto = ?, pedido = ?";
         
@@ -70,10 +70,10 @@ public class NotaFiscalRepositorio implements CrudNotaFiscalInterface{
     }
 
     @Override
-    public boolean Delete(NotaFiscal notafiscal) throws Exception {
+    public boolean delete(NotaFiscal notafiscal) throws SQLException {
         conexao = Conexao.getInstance();
         
-        Connection connection = conexao.Conectar();
+        Connection connection = (Connection) conexao.Conectar();
         
         String sql = "DELETE FROM nota fiscal WHERE idNF = ?";
         
@@ -87,12 +87,12 @@ public class NotaFiscalRepositorio implements CrudNotaFiscalInterface{
     }
 
     @Override
-    public List<NotaFiscal> select() throws Exception {
+    public List<NotaFiscal> select() throws SQLException {
         List<NotaFiscal> NotaFiscais = new ArrayList<>();
 
         conexao = Conexao.getInstance();
 
-        Connection connection = conexao.Conectar();
+        Connection connection = (Connection) conexao.Conectar();
 
         String sql = "SELECT * FROM notafiscal";
 

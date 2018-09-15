@@ -15,11 +15,11 @@ import java.util.List;
  */
 public interface CrudProdutoInterface {
     
-    public boolean Insert(Produto produto) throws SQLException, Exception;
+    public boolean insert(Produto produto) throws SQLException, Exception;
     
-    public boolean Update(Produto produto) throws SQLException, Exception;
+    public boolean update(Produto produto) throws SQLException, Exception;
     
-    public boolean Delete(Produto produto) throws SQLException, Exception;
+    public boolean delete(Produto produto) throws SQLException, Exception;
     
     public List<Produto> select() throws SQLException, Exception;
     

@@ -8,9 +8,10 @@ package burgueriarafael.repositorio;
 import burgueriarafael.basica.Pedido;
 import burgueriarafael.interfaces.CrudPedidoInterface;
 import burgueriarafael.util.banco.Conexao;
-import com.mysql.jdbc.Connection;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,11 +24,11 @@ public class PedidoRepositorio implements CrudPedidoInterface{
             Conexao conexao = new Conexao();
     
     @Override
-    public boolean Insert(Pedido pedido) throws Exception {
+    public boolean insert(Pedido pedido) throws SQLException {
         
          conexao = Conexao.getInstance();
          
-         Connection connection = conexao.Conectar();
+         Connection connection = (Connection) conexao.Conectar();
          
          String sql = " INSER INTO pedido (idPedido, valorProduto, nomeProduto, descricaoProduto)"
                  + "VALUES (?,?,?,?)";
@@ -47,11 +48,11 @@ public class PedidoRepositorio implements CrudPedidoInterface{
     }
 
     @Override
-    public boolean Update(Pedido pedido) throws Exception {
+    public boolean update(Pedido pedido) throws SQLException {
         
         conexao = Conexao.getInstance();
         
-        Connection connection = conexao.Conectar();
+        Connection connection = (Connection) conexao.Conectar();
         
         String sql = "UPDATE pedido set idPedido = ?, nomePedido = ? , descricaoPedido = ?";
         
@@ -69,11 +70,11 @@ public class PedidoRepositorio implements CrudPedidoInterface{
     }
 
     @Override
-    public boolean Delete(Pedido pedido) throws Exception {
+    public boolean delete(Pedido pedido) throws SQLException {
      
         conexao = Conexao.getInstance();
         
-        Connection connection = conexao.Conectar();
+        Connection connection = (Connection) conexao.Conectar();
         
         String sql = "DELETE FROM pedido WHERE idpedido = ?";
         
@@ -89,12 +90,12 @@ public class PedidoRepositorio implements CrudPedidoInterface{
     }
 
     @Override
-    public List<Pedido> select() throws Exception {
+    public List<Pedido> select() throws SQLException {
        List<Pedido> Pedidos = new ArrayList<>();
 
         conexao = Conexao.getInstance();
 
-        Connection connection = conexao.Conectar();
+        Connection connection = (Connection) conexao.Conectar();
 
         String sql = "SELECT * FROM pedido";
 

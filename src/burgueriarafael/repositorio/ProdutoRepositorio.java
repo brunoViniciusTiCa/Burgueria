@@ -8,9 +8,10 @@ package burgueriarafael.repositorio;
 import burgueriarafael.basica.Produto;
 import burgueriarafael.interfaces.CrudProdutoInterface;
 import burgueriarafael.util.banco.Conexao;
-import com.mysql.jdbc.Connection;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,10 +23,10 @@ public class ProdutoRepositorio implements CrudProdutoInterface{
    
         Conexao conexao = new Conexao();
     @Override
-    public boolean Insert(Produto produto) throws Exception {
+    public boolean insert(Produto produto) throws SQLException {
         conexao = Conexao.getInstance();
         
-        Connection connection = conexao.Conectar();
+        Connection connection = (Connection) conexao.Conectar();
         
         String sql = "INSERT INTO produto (idProduto, dataProduto, descricaoProduto, statusDoProduto,horaDoPruduto, idCliente)"
                 + "(?,?,?,?,?,?)";
@@ -47,11 +48,11 @@ public class ProdutoRepositorio implements CrudProdutoInterface{
     }
 
     @Override
-    public boolean Update(Produto produto) throws Exception {
+    public boolean update(Produto produto) throws SQLException {
         
         conexao = Conexao.getInstance();
         
-        Connection connection = conexao.Conectar();
+        Connection connection = (Connection) conexao.Conectar();
        
         String sql = "UPDATE produto set idproduto = ? , dataProduto = ?, descricaoProduto = ?, statusDoProduto = ?,"
                 + "horaDoPruduto = ?";
@@ -72,11 +73,11 @@ public class ProdutoRepositorio implements CrudProdutoInterface{
     }
 
     @Override
-    public boolean Delete(Produto produto) throws Exception {
+    public boolean delete(Produto produto) throws SQLException {
         
         conexao = Conexao.getInstance();
         
-        Connection connection = conexao.Conectar();
+        Connection connection = (Connection) conexao.Conectar();
         
         String sql = ("DELETE FROM produto WHERE idproduto = ?");
         
@@ -92,12 +93,12 @@ public class ProdutoRepositorio implements CrudProdutoInterface{
     }
 
     @Override
-    public List<Produto> select() throws Exception {
+    public List<Produto> select() throws SQLException {
        List<Produto> Produtos = new ArrayList<>();
 
         conexao = Conexao.getInstance();
 
-        Connection connection = conexao.Conectar();
+        Connection connection = (Connection) conexao.Conectar();
 
         String sql = "SELECT * FROM produto";
 

@@ -15,11 +15,11 @@ import java.util.List;
  */
 public interface CrudClienteInterface {
     
-    public boolean Insert(Cliente Cliente) throws SQLException, Exception;
+    public boolean insert(Cliente cliente) throws SQLException, Exception;
     
-    public boolean Update(Cliente cliente) throws SQLException, Exception;
+    public boolean update(Cliente cliente) throws SQLException, Exception;
     
-    public boolean Delete(Cliente cliente) throws SQLException, Exception;
+    public boolean delete(Cliente cliente) throws SQLException, Exception;
     
     public List<Cliente> select() throws SQLException, Exception;
 }

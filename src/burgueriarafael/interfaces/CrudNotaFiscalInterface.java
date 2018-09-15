@@ -15,11 +15,11 @@ import java.util.List;
  */
 public interface CrudNotaFiscalInterface {
  
-    public boolean Insert(NotaFiscal notafiscal) throws SQLException, Exception;
+    public boolean insert(NotaFiscal notafiscal) throws SQLException, Exception;
     
-    public boolean Update(NotaFiscal notafiscal) throws SQLException, Exception;
+    public boolean update(NotaFiscal notafiscal) throws SQLException, Exception;
     
-    public boolean Delete(NotaFiscal notafiscal) throws SQLException, Exception;
+    public boolean delete(NotaFiscal notafiscal) throws SQLException, Exception;
     
     public List<NotaFiscal> select() throws SQLException, Exception;
 }
