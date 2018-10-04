@@ -21,7 +21,7 @@ public class Cliente {
     private String telefoneCliente;
     private String enderecoCliente;
     private String nomeCliente;
-    private String sexoClient;
+    private String sexoCliente;
 
     /**
      * @return the idCliente
@@ -96,15 +96,15 @@ public class Cliente {
     /**
      * @return the sexoClient
      */
-    public String getSexoClient() {
-        return sexoClient;
+    public String getSexoCliente() {
+        return sexoCliente;
     }
 
     /**
-     * @param sexoClient the sexoClient to set
+     * @param sexoCliente the sexoClient to set
      */
-    public void setSexoClient(String sexoClient) {
-        this.sexoClient = sexoClient;
+    public void setSexoCliente(String sexoCliente) {
+        this.sexoCliente = sexoCliente;
     }
 
     

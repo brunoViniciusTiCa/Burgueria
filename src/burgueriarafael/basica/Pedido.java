@@ -10,15 +10,17 @@ package burgueriarafael.basica;
  * @author BrunoTiCaVini
  */
 public class Pedido {
-          /*CREATE TABLE Produto (idProduto INTEGER PRIMARY KEY,
-                            valorProduto MONEY NOT NULL,
-		            nomeProduto Varchar(40)NOT NULL,
-    			    descricaoProduto VARCHAR(50) NOT NULL); */
     
-    private int idPedido;
-    private double valorPedido;
-    private String nomePedido;
-    private String descricaoPedido;
+       
+      /*CREATE TABLE Pedido     (idPedido INTEGER PRIMARY KEY AUTO_INCREMENT,
+			       ItemsPedido VARCHAR(40) NOT NULL,
+			       StatusDoPedido VARCHAR(1)  CHECK (statusDoPedido = 'ABERTO' OR statusDoPedido = 'FECHADO') ,
+			       ValorProduto DECIMAL NOT NULL);*/
+    
+    private int    idPedido;
+    private String itemsPedido;
+    private String statusDoPedido;
+    private double valorProduto;
 
     /**
      * @return the idPedido
@@ -35,48 +37,51 @@ public class Pedido {
     }
 
     /**
-     * @return the valorPedido
+     * @return the itemsPedido
      */
-    public double getValorPedido() {
-        return valorPedido;
+    public String getItemsPedido() {
+        return itemsPedido;
     }
 
     /**
-     * @param valorPedido the valorPedido to set
+     * @param itemsPedido the itemsPedido to set
      */
-    public void setValorPedido(double valorPedido) {
-        this.valorPedido = valorPedido;
+    public void setItemsPedido(String itemsPedido) {
+        this.itemsPedido = itemsPedido;
     }
 
     /**
-     * @return the nomePedido
+     * @return the statusDoPedido
      */
-    public String getNomePedido() {
-        return nomePedido;
+    public String getStatusDoPedido() {
+        return statusDoPedido;
     }
 
     /**
-     * @param nomePedido the nomePedido to set
+     * @param statusDoPedido the statusDoPedido to set
      */
-    public void setNomePedido(String nomePedido) {
-        this.nomePedido = nomePedido;
+    public void setStatusDoPedido(String statusDoPedido) {
+        this.statusDoPedido = statusDoPedido;
     }
 
     /**
-     * @return the descricaoPedido
+     * @return the valorProduto
      */
-    public String getDescricaoPedido() {
-        return descricaoPedido;
+    public double getValorProduto() {
+        return valorProduto;
     }
 
     /**
-     * @param descricaoPedido the descricaoPedido to set
+     * @param valorProduto the valorProduto to set
      */
-    public void setDescricaoPedido(String descricaoPedido) {
-        this.descricaoPedido = descricaoPedido;
+    public void setValorProduto(double valorProduto) {
+        this.valorProduto = valorProduto;
     }
-    
+ 
 
 
    
+    
+   
+    
 }

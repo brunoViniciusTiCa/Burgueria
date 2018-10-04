@@ -34,22 +34,21 @@ public class ClienteRepositorio implements CrudClienteInterface{
         
        Connection connection = conexao.Conectar();
        
-        String sql = "INSERT INTO cliente (cpfCliente, telefoneCliente,enderecoCliente, nomeCliente, sexoClient) VALUES "
+        String sql = "INSERT INTO cliente (cpfCliente, telefoneCliente,enderecoCliente, nomeCliente, sexoCliente) VALUES "
                 + "(?,?,?,?,?)";
         
         PreparedStatement preparedstatement = connection.prepareStatement(sql);
         
-        
-      
         preparedstatement.setString(1, cliente.getCpfCliente());
         preparedstatement.setString(2, cliente.getTelefoneCliente());
         preparedstatement.setString(3, cliente.getEnderecoCliente());
         preparedstatement.setString(4, cliente.getNomeCliente());
-        preparedstatement.setString(5, cliente.getSexoClient());
+        preparedstatement.setString(5, cliente.getSexoCliente());
         
         preparedstatement.executeUpdate();
         
         conexao.Desconectar();
+        
         return true;
         
     }
@@ -68,7 +67,7 @@ public class ClienteRepositorio implements CrudClienteInterface{
        
        preparedstatement.setString(1, cliente.getTelefoneCliente());
        preparedstatement.setString(2, cliente.getEnderecoCliente());
-       preparedstatement.setInt(3, cliente.getIdCliente());
+       preparedstatement.setInt   (3, cliente.getIdCliente());
        
        preparedstatement.executeUpdate();
        
@@ -117,7 +116,7 @@ public class ClienteRepositorio implements CrudClienteInterface{
             c.setTelefoneCliente(resultCliente.getString("telefoneCliente"));
             c.setEnderecoCliente(resultCliente.getString("enderecoCliente"));
             c.setNomeCliente(resultCliente.getString("nomeCliente"));
-            c.setSexoClient(resultCliente.getString("sexoClient"));
+            c.setSexoCliente(resultCliente.getString("sexoCliente"));
             
             clienteList.add(c);
          }
@@ -125,6 +124,77 @@ public class ClienteRepositorio implements CrudClienteInterface{
          conexao.Desconectar();
         return clienteList;
     }
+
+    @Override
+    public List<Cliente> selectByNomeCliente(Cliente cliente) throws SQLException, Exception {
+        
+         List<Cliente> clienteList = new ArrayList();
+         
+         conexao = Conexao.getInstance();
+         
+         java.sql.Connection connection =  conexao.Conectar();
+         
+         String sql = "Select * From cliente WHERE nomeCliente = ? ";
+         PreparedStatement preparedstatement = connection.prepareStatement(sql);
+         
+         preparedstatement.setString(1, cliente.getNomeCliente());
+         
+         ResultSet resultClienteNome = preparedstatement.executeQuery();
+         
+         while(resultClienteNome.next()){
+         
+            Cliente c = new Cliente();
+            c.setIdCliente(resultClienteNome.getInt("idCliente"));
+            c.setCpfCliente(resultClienteNome.getString("cpfCliente"));
+            c.setTelefoneCliente(resultClienteNome.getString("telefoneCliente"));
+            c.setEnderecoCliente(resultClienteNome.getString("enderecoCliente"));
+            c.setNomeCliente(resultClienteNome.getString("nomeCliente"));
+            c.setSexoCliente(resultClienteNome.getString("sexoCliente"));
+            
+            clienteList.add(c);
+         }
+        conexao.Desconectar();
+        
+        return clienteList;
+    }
+
+    @Override
+    public List<Cliente> selectByCpfCliente(Cliente cliente) throws SQLException, Exception {
+        List<Cliente> clienteList = new ArrayList();
+         
+         conexao = Conexao.getInstance();
+         
+         java.sql.Connection connection =  conexao.Conectar();
+         
+         String sql = "Select * From cliente WHERE cpfCliente = ? ";
+         PreparedStatement preparedstatement = connection.prepareStatement(sql);
+         
+         preparedstatement.setString(1, cliente.getCpfCliente());
+         
+         ResultSet resultCliente = preparedstatement.executeQuery();
+         
+         while(resultCliente.next()){
+         
+            Cliente c = new Cliente();
+            c.setIdCliente(resultCliente.getInt("idCliente"));
+            c.setCpfCliente(resultCliente.getString("cpfCliente"));
+            c.setTelefoneCliente(resultCliente.getString("telefoneCliente"));
+            c.setEnderecoCliente(resultCliente.getString("enderecoCliente"));
+            c.setNomeCliente(resultCliente.getString("nomeCliente"));
+            c.setSexoCliente(resultCliente.getString("sexoCliente"));
+            
+            clienteList.add(c);
+         }
+        
+         conexao.Desconectar();
+        return clienteList;
+    }
+
+  
+
+  
+    
+    
 
    
 

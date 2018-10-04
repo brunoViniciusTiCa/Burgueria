@@ -22,4 +22,8 @@ public interface CrudNotaFiscalInterface {
     public boolean delete(NotaFiscal notafiscal) throws SQLException, Exception;
     
     public List<NotaFiscal> select() throws SQLException, Exception;
+    
+    public List<NotaFiscal> selectById(NotaFiscal notafiscal) throws SQLException, Exception;
+    
+    public List<NotaFiscal> selectByData(NotaFiscal notafiscal) throws SQLException, Exception; 
 }

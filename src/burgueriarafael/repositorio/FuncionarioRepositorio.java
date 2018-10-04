@@ -119,9 +119,77 @@ public class FuncionarioRepositorio implements CrudFuncionarioInterface{
            
             Funcionarios.add(f);
             
-            conexao.Desconectar();
-        
         }
+        conexao.Desconectar();
+        return Funcionarios;
+    }
+
+    @Override
+    public List<Funcionario> selectByIdFuncionario(Funcionario funcionario) throws SQLException, Exception {
+       
+        List<Funcionario> Funcionarios = new ArrayList<>();
+       
+        conexao = Conexao.getInstance();
+       
+        java.sql.Connection connection = conexao.Conectar();
+        
+        String sql = "Select * from Funcionario WHERE idFuncionario = ? ";
+        
+        PreparedStatement preparedstatement = connection.prepareStatement(sql);
+        
+        preparedstatement.setInt(1, funcionario.getIdFuncionario());
+
+        ResultSet resultFuncionario = preparedstatement.executeQuery();
+        
+        while(resultFuncionario.next()) {
+          
+            Funcionario f = new Funcionario();
+            
+            f.setIdFuncionario(resultFuncionario.getInt("IdFuncionario"));
+            f.setCpfFuncionario(resultFuncionario.getString("cpfFuncionario"));
+            f.setTelefoneFuncionario(resultFuncionario.getString("telefoneFuncionario"));
+            f.setEnderecoFuncionario(resultFuncionario.getString("enderecoFuncionario"));
+            f.setNomeFuncionario(resultFuncionario.getString("nomeFuncionario"));
+            f.setSexoFuncionario(resultFuncionario.getString("sexoFuncionario"));
+           
+            Funcionarios.add(f);
+            
+        }
+        conexao.Desconectar();
+        return Funcionarios;
+    }
+
+    @Override
+    public List<Funcionario> selectByNomeFuncionario(Funcionario funcionario) throws SQLException, Exception {
+       List<Funcionario> Funcionarios = new ArrayList<>();
+       
+        conexao = Conexao.getInstance();
+       
+        java.sql.Connection connection = conexao.Conectar();
+        
+        String sql = "Select * from Funcionario WHERE nomeFuncionario = ? ";
+        
+        PreparedStatement preparedstatement = connection.prepareStatement(sql);
+        
+        preparedstatement.setString(1, funcionario.getNomeFuncionario());
+
+        ResultSet resultFuncionario = preparedstatement.executeQuery();
+        
+        while(resultFuncionario.next()) {
+          
+            Funcionario f = new Funcionario();
+            
+            f.setIdFuncionario(resultFuncionario.getInt("IdFuncionario"));
+            f.setCpfFuncionario(resultFuncionario.getString("cpfFuncionario"));
+            f.setTelefoneFuncionario(resultFuncionario.getString("telefoneFuncionario"));
+            f.setEnderecoFuncionario(resultFuncionario.getString("enderecoFuncionario"));
+            f.setNomeFuncionario(resultFuncionario.getString("nomeFuncionario"));
+            f.setSexoFuncionario(resultFuncionario.getString("sexoFuncionario"));
+           
+            Funcionarios.add(f);
+            
+        }
+        conexao.Desconectar();
         return Funcionarios;
     }
     

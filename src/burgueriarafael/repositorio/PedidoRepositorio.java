@@ -19,85 +19,88 @@ import java.util.List;
  *
  * @author BrunoTiCaVini
  */
-public class PedidoRepositorio implements CrudPedidoInterface{
-   
-            Conexao conexao = new Conexao();
+public class PedidoRepositorio implements CrudPedidoInterface {
+
+            Conexao conexao = null;
     
     @Override
     public boolean insert(Pedido pedido) throws SQLException {
+         
+          conexao = Conexao.getInstance();
+         
+         Connection connection = conexao.Conectar();
+         
+          String sql = "INSERT INTO pedido (itemsPedido, statusDoPedido, valorProduto) VALUES"
+                + "(?,?,?)";
+         
+  
+         PreparedStatement preparedstatement = connection.prepareStatement(sql);
+         
+         preparedstatement.setString(1, pedido.getItemsPedido());
+         preparedstatement.setString(2, pedido.getStatusDoPedido());
+         preparedstatement.setDouble(3, pedido.getValorProduto());
+         
+         preparedstatement.executeUpdate();
         
-         conexao = Conexao.getInstance();
+        conexao.Desconectar();
+        
+        return true;
+    }
+
+    @Override
+    public boolean update(Pedido pedido) throws SQLException, Exception {
+       
+        conexao = Conexao.getInstance();
          
-         Connection connection = (Connection) conexao.Conectar();
+         Connection connection = conexao.Conectar();
          
-         String sql = " INSER INTO pedido (idPedido, valorProduto, nomeProduto, descricaoProduto)"
-                 + "VALUES (?,?,?,?)";
+          String sql = "UPDATE pedido SET itemsPedido = ?, statusDoPedido = ?, valorProduto = ?"
+                + "WHERE idPedido = ?";
+         
+  
+         PreparedStatement preparedstatement = connection.prepareStatement(sql);
+         
+         preparedstatement.setString(1, pedido.getItemsPedido());
+         preparedstatement.setString(2, pedido.getStatusDoPedido());
+         preparedstatement.setDouble(3, pedido.getValorProduto());
+         preparedstatement.setInt(4, pedido.getIdPedido());
+         
+         preparedstatement.executeUpdate();
+        
+        conexao.Desconectar();
+        
+        return true;
+    }
+
+    @Override
+    public boolean delete(Pedido pedido) throws SQLException, Exception {
+     
+        conexao = Conexao.getInstance();
+         
+         Connection connection = conexao.Conectar();
+         
+          String sql = "DELETE FROM pedido WHERE idPedido = ?";
          
          PreparedStatement preparedstatement = connection.prepareStatement(sql);
          
          preparedstatement.setInt(1, pedido.getIdPedido());
-         preparedstatement.setDouble(2 , pedido.getValorPedido());
-         preparedstatement.setString(3, pedido.getNomePedido());
-         preparedstatement.setString(4, pedido.getDescricaoPedido());
-         
+       
          preparedstatement.executeUpdate();
-         
+        
          conexao.Desconectar();
         
         return true;
     }
 
     @Override
-    public boolean update(Pedido pedido) throws SQLException {
-        
-        conexao = Conexao.getInstance();
-        
-        Connection connection = (Connection) conexao.Conectar();
-        
-        String sql = "UPDATE pedido set idPedido = ?, nomePedido = ? , descricaoPedido = ?";
-        
-        PreparedStatement preparedstatement = connection.prepareStatement(sql);
-        
-        preparedstatement.setInt(1, pedido.getIdPedido());
-        preparedstatement.setString(2, pedido.getNomePedido());
-        preparedstatement.setString(3, pedido.getDescricaoPedido());
-        
-        preparedstatement.executeUpdate();
-        
-        conexao.Desconectar();
-        
-        return true;
-    }
-
-    @Override
-    public boolean delete(Pedido pedido) throws SQLException {
-     
-        conexao = Conexao.getInstance();
-        
-        Connection connection = (Connection) conexao.Conectar();
-        
-        String sql = "DELETE FROM pedido WHERE idpedido = ?";
-        
-        PreparedStatement preparedstatement = connection.prepareStatement(sql);
-        
-        preparedstatement.setInt(1, pedido.getIdPedido());
-        
-        preparedstatement.executeUpdate();
-        
-        conexao.Desconectar();
-        
-        return true;        
-    }
-
-    @Override
-    public List<Pedido> select() throws SQLException {
-       List<Pedido> Pedidos = new ArrayList<>();
+    public List<Pedido> select() throws SQLException, Exception {
+     List<Pedido> Pedido = new ArrayList<>();
 
         conexao = Conexao.getInstance();
 
-        Connection connection = (Connection) conexao.Conectar();
+        java.sql.Connection connection = conexao.Conectar();
 
-        String sql = "SELECT * FROM pedido";
+        String sql = "SELECT * FROM Pedido";
 
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
@@ -105,22 +108,22 @@ public class PedidoRepositorio implements CrudPedidoInterface{
 
         while (resultPedido.next()) {
 
-            Pedido p = new Pedido();
+           Pedido p = new Pedido();
 
-            p.setIdPedido(resultPedido.getInt("idPedido"));  //nome do campo
+            p.setIdPedido(resultPedido.getInt("idPedido"));  
 
-            p.setValorPedido(resultPedido.getDouble("ValorPedido"));
+            p.setItemsPedido(resultPedido.getString("itemsPedido"));
 
-            p.setNomePedido(resultPedido.getString("nomePedido"));
+            p.setItemsPedido(resultPedido.getString("statusDoPedido"));
 
-            p.setDescricaoPedido(resultPedido.getString("DescricaoPedido"));
-
-            Pedidos.add(p);
+            p.setValorProduto(resultPedido.getDouble("valorProduto"));
+            
+            Pedido.add(p);
 
         }
         conexao.Desconectar();
+        
+        return Pedido;
 
-        return Pedidos;
     }
-    
 }

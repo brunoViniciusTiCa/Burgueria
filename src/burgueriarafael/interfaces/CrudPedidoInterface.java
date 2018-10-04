@@ -13,14 +13,15 @@ import java.util.List;
  *
  * @author BrunoTiCaVini
  */
-public interface CrudPedidoInterface {
-   
-    public boolean insert(Pedido pedido) throws SQLException, Exception;
+public interface CrudPedidoInterface  {
+    
+    public  boolean insert(Pedido pedido) throws SQLException, Exception;
     
     public boolean update(Pedido pedido) throws SQLException, Exception;
     
     public boolean delete(Pedido pedido) throws SQLException, Exception;
     
     public List<Pedido> select() throws SQLException, Exception;
-   
+    
+
 }

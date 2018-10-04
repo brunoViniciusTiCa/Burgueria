@@ -21,24 +21,25 @@ import java.util.List;
  */
 public class ProdutoRepositorio implements CrudProdutoInterface{
    
-        Conexao conexao = new Conexao();
-    @Override
+        Conexao conexao = null;
+    
+        @Override
     public boolean insert(Produto produto) throws SQLException {
+        
         conexao = Conexao.getInstance();
         
-        Connection connection = (Connection) conexao.Conectar();
+        Connection connection = conexao.Conectar();
         
-        String sql = "INSERT INTO produto (idProduto, dataProduto, descricaoProduto, statusDoProduto,horaDoPruduto, idCliente)"
-                + "(?,?,?,?,?,?)";
+        String sql = "INSERT INTO produto ( valorProduto, nomeProduto, descricaoProduto ) VALUES"
+                + "(?,?,?)";
         
-        PreparedStatement preparedstatement = connection.prepareStatement(sql);
+       PreparedStatement preparedstatement = connection.prepareStatement(sql);
         
-        preparedstatement.setInt(1, produto.getIdProduto());
-        preparedstatement.setDate(2, produto.getDataProduto());
-        preparedstatement.setString(3, produto.getDescricaoProduto());
-        preparedstatement.setString(4, produto.getStatusDoProduto());
-        preparedstatement.setTime(5, produto.getHoraDoPruduto());
-        preparedstatement.setInt(6, produto.getCliente().getIdCliente());
+        preparedstatement.setDouble  (1, produto.getValorProduto());
+        preparedstatement.setString  (2, produto.getNomeProduto());
+        preparedstatement.setString  (3, produto.getDescricaoProduto());
+        
+        
         
         preparedstatement.executeUpdate();
         
@@ -52,18 +53,17 @@ public class ProdutoRepositorio implements CrudProdutoInterface{
         
         conexao = Conexao.getInstance();
         
-        Connection connection = (Connection) conexao.Conectar();
+        Connection connection = conexao.Conectar();
        
-        String sql = "UPDATE produto set idproduto = ? , dataProduto = ?, descricaoProduto = ?, statusDoProduto = ?,"
-                + "horaDoPruduto = ?";
+        String sql = "UPDATE produto SET valorProduto = ?, nomeProduto = ?, descricaoProduto = ?"
+                + "WHERE idProduto = ?" ;
         
         PreparedStatement preparedstatement = connection.prepareStatement(sql);
         
-        preparedstatement.setInt(1, produto.getIdProduto());
-        preparedstatement.setDate(2, produto.getDataProduto());
+        preparedstatement.setDouble(1, produto.getValorProduto());
+        preparedstatement.setString(2, produto.getNomeProduto());
         preparedstatement.setString(3, produto.getDescricaoProduto());
-        preparedstatement.setString(4, produto.getStatusDoProduto());
-        preparedstatement.setTime(5, produto.getHoraDoPruduto());
+        preparedstatement.setInt(4, produto.getIdProduto());
         
         preparedstatement.executeUpdate();
         
@@ -94,15 +94,91 @@ public class ProdutoRepositorio implements CrudProdutoInterface{
 
     @Override
     public List<Produto> select() throws SQLException {
-       List<Produto> Produtos = new ArrayList<>();
+       
+        List<Produto> Produtos = new ArrayList<>();
 
         conexao = Conexao.getInstance();
 
-        Connection connection = (Connection) conexao.Conectar();
+        java.sql.Connection connection = conexao.Conectar();
 
-        String sql = "SELECT * FROM produto";
+        String sql = "SELECT * FROM Produto";
 
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+        ResultSet resultProduto = preparedStatement.executeQuery();
+
+        while (resultProduto.next()) {
+
+           Produto p = new Produto();
+
+            p.setIdProduto(resultProduto.getInt("idProduto"));  
+
+            p.setValorProduto(resultProduto.getDouble("valorProduto"));
+
+            p.setNomeProduto(resultProduto.getString("nomeProduto"));
+
+            p.setDescricaoProduto(resultProduto.getString("descricaoProduto"));
+            
+            Produtos.add(p);
+
+        }
+        conexao.Desconectar();
+        
+        return Produtos;
+
+    }
+
+    @Override
+    public List<Produto> selectByIdProduto(Produto produto) throws SQLException, Exception {
+        
+        List<Produto> Produtos = new ArrayList<>();
+
+        conexao = Conexao.getInstance();
+
+        java.sql.Connection connection = conexao.Conectar();
+
+        String sql = "SELECT * FROM produto WHERE idProduto = ? ";
+
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        
+        preparedStatement.setInt(1, produto.getIdProduto());
+
+        ResultSet resultProduto = preparedStatement.executeQuery();
+
+        while (resultProduto.next()) {
+
+           Produto p = new Produto();
+
+            p.setIdProduto(resultProduto.getInt("idProduto"));  
+
+            p.setValorProduto(resultProduto.getDouble("valorProduto"));
+
+            p.setNomeProduto(resultProduto.getString("nomeProduto"));
+
+            p.setDescricaoProduto(resultProduto.getString("descricaoProduto"));
+            
+            Produtos.add(p);
+
+        }
+        conexao.Desconectar();
+       
+        return Produtos;
+    }
+
+    @Override
+    public List<Produto> selectByNomeProduto(Produto produto) throws SQLException, Exception {
+      
+        List<Produto> Produtos = new ArrayList<>();
+
+        conexao = Conexao.getInstance();
+
+        java.sql.Connection connection = conexao.Conectar();
+
+        String sql = "SELECT * FROM produto WHERE nomeProduto = ? ";
+
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        
+        preparedStatement.setString(1, produto.getNomeProduto());
 
         ResultSet resultProduto = preparedStatement.executeQuery();
 
@@ -112,23 +188,18 @@ public class ProdutoRepositorio implements CrudProdutoInterface{
 
             p.setIdProduto(resultProduto.getInt("idProduto"));  
 
-            p.setDataProduto(resultProduto.getDate("dataProduto"));
+            p.setValorProduto(resultProduto.getDouble("valorProduto"));
+
+            p.setNomeProduto(resultProduto.getString("nomeProduto"));
 
             p.setDescricaoProduto(resultProduto.getString("descricaoProduto"));
-
-            p.setStatusDoProduto(resultProduto.getString("statusDoProduto"));
             
-            p.setHoraDoPruduto(resultProduto.getTime("horaDoPruduto"));
-
-            p.getCliente().setIdCliente(resultProduto.getInt("idCliente"));
-
             Produtos.add(p);
 
         }
         conexao.Desconectar();
-
+       
         return Produtos;
-
     }
     
 }

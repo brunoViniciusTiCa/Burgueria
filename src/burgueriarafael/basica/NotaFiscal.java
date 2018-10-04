@@ -5,8 +5,10 @@
  */
 package burgueriarafael.basica;
 
-import java.sql.Date;
-import java.sql.Time;
+import java.sql.Timestamp;
+
+
+
 
 /**
  *
@@ -14,14 +16,28 @@ import java.sql.Time;
  */
 public class NotaFiscal {
     
+          /*CREATE TABLE NotaFiscal (idNF    INTEGER PRIMARY KEY AUTO_INCREMENT, 
+			   DATANF TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+                           valorProduto DECIMAL NOT NULL,
+                           nomeProduto  VARCHAR (40) NOT NULL,
+                           valorTotal DECIMAL NOT NULL,
+			   statusDoPedido CHAR(1) CHECK (statusDoPedido = 'A' OR statusDoPedido = 'F'),
+			   quantidadeProduto INTEGER NOT NULL,
+			   idCliente  INTEGER REFERENCES Cliente(idCliente),
+			   idProduto  INTEGER REFERENCES Produto(idProduto),
+                           idFuncionario INTEGER REFERENCES Funcionario(idFuncionario));
+						 */
+
     private int idNf;
-    private Date dataNF;
-    private Time horaNF;
-    private Funcionario funcionario = new Funcionario();
+    private Timestamp horaData;
+    private Double valorProduto;
+    private String nomeProduto;
+    private Double valorTotal;
+    private int quantidadeProduto;
     private Cliente cliente = new Cliente();
     private Produto produto = new Produto();
     private Pedido pedido = new Pedido();
-
+    private Funcionario funcionario = new Funcionario();
 
     /**
      * @return the idNf
@@ -38,45 +54,73 @@ public class NotaFiscal {
     }
 
     /**
-     * @return the dataNF
+     * @return the horaData
      */
-    public Date getDataNF() {
-        return dataNF;
+    public Timestamp getHoraData() {
+        return horaData;
     }
 
     /**
-     * @param dataNF the dataNF to set
+     * @param horaData the horaData to set
      */
-    public void setDataNF(Date dataNF) {
-        this.dataNF = dataNF;
+    public void setHoraData(Timestamp horaData) {
+        this.horaData = horaData;
     }
 
     /**
-     * @return the horaNF
+     * @return the valorProduto
      */
-    public Time getHoraNF() {
-        return horaNF;
+    public Double getValorProduto() {
+        return valorProduto;
     }
 
     /**
-     * @param horaNF the horaNF to set
+     * @param valorProduto the valorProduto to set
      */
-    public void setHoraNF(Time horaNF) {
-        this.horaNF = horaNF;
+    public void setValorProduto(Double valorProduto) {
+        this.valorProduto = valorProduto;
     }
 
     /**
-     * @return the funcionario
+     * @return the nomeProduto
      */
-    public Funcionario getFuncionario() {
-        return funcionario;
+    public String getNomeProduto() {
+        return nomeProduto;
     }
 
     /**
-     * @param funcionario the funcionario to set
+     * @param nomeProduto the nomeProduto to set
      */
-    public void setFuncionario(Funcionario funcionario) {
-        this.funcionario = funcionario;
+    public void setNomeProduto(String nomeProduto) {
+        this.nomeProduto = nomeProduto;
+    }
+
+    /**
+     * @return the valorTotal
+     */
+    public Double getValorTotal() {
+        return valorTotal;
+    }
+
+    /**
+     * @param valorTotal the valorTotal to set
+     */
+    public void setValorTotal(Double valorTotal) {
+        this.valorTotal = valorTotal;
+    }
+
+    /**
+     * @return the quantidadeProduto
+     */
+    public int getQuantidadeProduto() {
+        return quantidadeProduto;
+    }
+
+    /**
+     * @param quantidadeProduto the quantidadeProduto to set
+     */
+    public void setQuantidadeProduto(int quantidadeProduto) {
+        this.quantidadeProduto = quantidadeProduto;
     }
 
     /**
@@ -120,16 +164,18 @@ public class NotaFiscal {
     public void setPedido(Pedido pedido) {
         this.pedido = pedido;
     }
-    
-     /*CREATE TABLE NotaFiscal (idNF INTEGER PRIMARY KEY, 
-			       dataNF DATE NOT NULL, 
-			       horaNF TIME NOT NULL,
-			       idFuncionario INTEGER REFERENCES Funcionario(idFuncionario),
-			       idCliente INTEGER REFERENCES Cliente(idCliente), 
-			       idProduto INTEGER REFERENCES Produto(idProduto),
-			       idPedido  INTEGER REFERENCES Pedido(idPedido));*/
-    
- 
-  
-   
+
+    /**
+     * @return the funcionario
+     */
+    public Funcionario getFuncionario() {
+        return funcionario;
+    }
+
+    /**
+     * @param funcionario the funcionario to set
+     */
+    public void setFuncionario(Funcionario funcionario) {
+        this.funcionario = funcionario;
+    }
 }

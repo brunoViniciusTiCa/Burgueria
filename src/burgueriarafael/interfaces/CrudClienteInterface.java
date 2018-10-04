@@ -22,4 +22,8 @@ public interface CrudClienteInterface {
     public boolean delete(Cliente cliente) throws SQLException, Exception;
     
     public List<Cliente> select() throws SQLException, Exception;
+    
+    public List<Cliente> selectByNomeCliente(Cliente cliente)throws SQLException, Exception;
+    
+     public List<Cliente> selectByCpfCliente(Cliente cliente)throws SQLException, Exception;
 }
