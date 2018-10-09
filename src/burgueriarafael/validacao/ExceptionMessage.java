@@ -11,24 +11,52 @@ package burgueriarafael.validacao;
  */
 public interface ExceptionMessage {
     
-         public final static String QUANTIDADE_CARACTERES_PERMITIDOS = "A quantidade de caracteres permitidas para esse campo é :";
-
-         public final static String ID_IGUAL_ZER0 = "não pode ser igual a zero.";
+    
     
     
     public interface ExceptionMessageCliente {
+        
+        public final static String CLIENTE_NAO_EXISTE = "Cliente não existe!"; 
+        
+        public final static String VALIDAR_ID_CLIENTA = "id já cadastrado!";
     
-         public final static String NUMERO_ID_NULL_OU_INVALIDO = "Este id não é existente ou diferentes de números";
+         public final static String CPF_CLIENTE_NULL  = "Cpf invalido do cliente, cpf nulo.";
          
-         public final static String CPF_CLIENTE_NULL_OU_INVALIDO  = "Cpf invalido do cliente, invalido ou já cadastrado.";
+         public final static String CPF_CLIENTE_VAZIO  = "Cpf invalido do cliente, cpf vazio.";
          
-         public final static String TELEFONE_CLINETE_NULL_OU_INVALIDO = "Verificar o telefone do cliente, algo está errado. Invalido, nulo ou já cadastrado.  ";
+         public final static String CPF_CLIENTE_TAMANHO  = "Cpf invalido do cliente, tamanhão do cpf invalido.";
+         
+        
+         public final static String TELEFONE_CLIENTE_NULL = "Verificar o telefone do cliente, algo está errado. Telefone nulo.";
+         
+         public final static String TELEFONE_CLIENTE_VAZIO = "Verificar o telefone do cliente, algo está errado. Telefone vazio.";
       
-         public final static String ENDERECO_NULL_OU_INVALIDO = "Por favor verificar o campo se está vazio, nulo, invalido ou já foi cadastrado.";
+         public final static String TELEFONE_CLIENTE_TAMANHO = "Verificar o tamanho do telefone do cliente!";
          
-         public final static String NOME_NULL_INVALIDO_OU_CADASTRADO = "Prencha atenciosamente esté campo, verifique-se se já está cadastrado, nulo ou invalido.";
+         public final static String ENDERECO_CLIENTE_NULL = "Verificar o telefone do cliente, algo está errado. Endereço nulo.";
          
-         public final static String SEXO_NULL_OU_INVALIDO = "Você esqueceu de cadastrar seu género.";
+         public final static String ENDERECO_CLIENTE_VAZIO = "Verificar o telefone do cliente, algo está errado. Endereço vazio.";
+         
+      
+         
+         
+         
+         
+         public final static String NOME_CLIENTE_NULL = "Prencha atenciosamente esté campo,campo nulo.";
+         
+         public final static String NOME_CLIENTE_VAZIO = "Prencha atenciosamente esté campo,campo vazio.";
+         
+         
+         
+         public final static String SEXO_CLIENTE_NULL = "Campo nulo não pode existir!";
+         
+         public final static String SEXO_CLIENTE_VAZIO = "Campo vazio não pode cadastrar!";
+         
+         public final static String SEXO_CLIENTE_TAMANHO = "Tamanho invalido, verificar!";
+         
+         public final static String SEXO_CLIENTE_M_OU_F = "Só pode cadastrar F ou M";
+                 
+                 
     }
     
     public interface ExceptionMessageFuncionario{
