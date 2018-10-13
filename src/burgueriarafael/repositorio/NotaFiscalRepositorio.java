@@ -35,18 +35,14 @@ public class NotaFiscalRepositorio implements CrudNotaFiscalInterface{
        
        PreparedStatement preparedstatement = connection.prepareStatement(sql);
        
-
-       
-       
        preparedstatement.setDouble(1,  notafiscal.getProduto().getValorProduto());
-       preparedstatement.setString(2,  notafiscal.getNomeProduto());
+       preparedstatement.setString(2,  notafiscal.getProduto().getNomeProduto());
        preparedstatement.setDouble(3,  notafiscal.getValorTotal());
        preparedstatement.setInt   (4,  notafiscal.getQuantidadeProduto());
        preparedstatement.setInt   (5,  notafiscal.getCliente().getIdCliente());
        preparedstatement.setInt   (6,  notafiscal.getProduto().getIdProduto());
        preparedstatement.setInt   (7,  notafiscal.getPedido().getIdPedido());
        preparedstatement.setInt   (8,  notafiscal.getFuncionario().getIdFuncionario());
-       
        
        preparedstatement.executeUpdate();
        

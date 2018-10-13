@@ -10,6 +10,7 @@ import burgueriarafael.basica.Funcionario;
 import burgueriarafael.basica.NotaFiscal;
 import burgueriarafael.basica.Pedido;
 import burgueriarafael.basica.Produto;
+import burgueriarafael.negocio.ClienteNegocio;
 import burgueriarafael.repositorio.ClienteRepositorio;
 import burgueriarafael.repositorio.FuncionarioRepositorio;
 import burgueriarafael.repositorio.NotaFiscalRepositorio;
@@ -51,6 +52,7 @@ public class BurgueriaTestes {
          //selecionarCliente();
          //selecionarClienteNome();
          //selecionarClienteCpf();
+         //clienteNegocio();
          
          
          //    FUNCIONARIO OK
@@ -69,16 +71,13 @@ public class BurgueriaTestes {
          //selecionarProdutoById();
          //selecionarByNome();
          
-
          // NOTA FISCAL OK
-         //inserirNotaFiscal();
+         inserirNotaFiscal();
          //alterarNotaFiscal();
          //deletarNotafiscal();
          //selecionarNotaFiscal();
          //selecinarNotaFiscalById();
          //selecinarNotaFiscalByData();
-         
-     
          
          //  PEDIDO 
          //inserirPedido();
@@ -87,7 +86,7 @@ public class BurgueriaTestes {
          //selecionarPedido();
     } 
  
-    /*public static void inserirDadosCliente() throws SQLException, Exception{
+    public static void inserirDadosCliente() throws SQLException, Exception{
         Connection con = null;
         Conexao conexao;
         conexao = Conexao.getInstance();
@@ -95,10 +94,10 @@ public class BurgueriaTestes {
         ClienteRepositorio clirep = new ClienteRepositorio();
         Cliente cliente = new Cliente();
         
-        cliente.setCpfCliente("074.254.974-76");
+        cliente.setCpfCliente("123.987.489-88");
         cliente.setTelefoneCliente("95565126");
         cliente.setEnderecoCliente("varzea");
-        cliente.setNomeCliente("Bruno Vinicius");
+        cliente.setNomeCliente("Ricardo Patricio");
         cliente.setSexoCliente("M");
         
         try {
@@ -484,11 +483,10 @@ public class BurgueriaTestes {
            NotaFiscalRepositorio notaRep = new NotaFiscalRepositorio();
            NotaFiscal notafiscal = new NotaFiscal();
         
-          
-          notafiscal.getProduto().setValorProduto(9.00);
-          notafiscal.setNomeProduto("Pizza");
-          notafiscal.setValorTotal(50.89);
-          notafiscal.setQuantidadeProduto(3);
+          notafiscal.getProduto().setValorProduto(10.35);
+          notafiscal.getProduto().setNomeProduto("Pão"); 
+          notafiscal.setValorTotal(102.78);
+          notafiscal.setQuantidadeProduto(8);
           notafiscal.getCliente().setIdCliente(1);
           notafiscal.getProduto().setIdProduto(1);
           notafiscal.getPedido().setIdPedido(1);
@@ -623,7 +621,7 @@ public class BurgueriaTestes {
              
              pedido.setItemsPedido("Hamburguer");
              pedido.setStatusDoPedido("ABERTO");
-             pedido.setValorProduto(17.50);
+             pedido.getProduto().setValorProduto(15.50);
              
              try{
                pedRep.insert(pedido);
@@ -645,7 +643,7 @@ public class BurgueriaTestes {
              
              pedido.setItemsPedido("Hamburguer, Batata Frita");
              pedido.setStatusDoPedido("FECHADO");
-             pedido.setValorProduto(22.50);
+             pedido.getProduto().setValorProduto(22.50);
              
              try{
                pedRep.insert(pedido);
@@ -694,6 +692,27 @@ public class BurgueriaTestes {
                }
     } 
     
+     public static void clienteNegocio() throws SQLException, Exception{
+          Connection con = null;
+          Conexao conexao;
+          conexao = Conexao.getInstance();
+          
+          ClienteNegocio cliNeg = new ClienteNegocio();
+          Cliente cliente = new Cliente();
+          
+          cliNeg.insert(cliente);
+          
+          cliente.setCpfCliente("78999775146");
+          
+           try{
+               cliNeg.insert(cliente);
+               System.out.println("Cliente inserido!");
+               }
+               catch(Exception ex){
+                System.out.println("Cliente não inserido!");
+               }
+    }
+    
  
     public static void testeBD(){
         Connection con = null;
@@ -712,8 +731,10 @@ public class BurgueriaTestes {
             System.out.println("Falhou");
        
         }
-        
-    }*/
+    }
+
+
+   
 }
 
 

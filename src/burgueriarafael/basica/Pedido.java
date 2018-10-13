@@ -20,7 +20,7 @@ public class Pedido {
     private int    idPedido;
     private String itemsPedido;
     private String statusDoPedido;
-    private double valorProduto;
+    private Produto produto = new Produto();
 
     /**
      * @return the idPedido
@@ -65,18 +65,22 @@ public class Pedido {
     }
 
     /**
-     * @return the valorProduto
+     * @return the produto
      */
-    public double getValorProduto() {
-        return valorProduto;
+    public Produto getProduto() {
+        return produto;
     }
 
     /**
-     * @param valorProduto the valorProduto to set
+     * @param produto the produto to set
      */
-    public void setValorProduto(double valorProduto) {
-        this.valorProduto = valorProduto;
+    public void setProduto(Produto produto) {
+        this.produto = produto;
     }
+    
+    
+
+ 
  
 
 

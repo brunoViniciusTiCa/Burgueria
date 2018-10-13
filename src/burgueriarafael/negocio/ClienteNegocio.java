@@ -26,7 +26,7 @@ public class ClienteNegocio implements CrudClienteInterface {
 
     @Override
     public boolean insert(Cliente cliente) throws SQLException, Exception {
-        return clienteRepositorio.update(cliente);
+        return clienteRepositorio.insert(cliente);
     }
 
     @Override
@@ -113,6 +113,9 @@ public class ClienteNegocio implements CrudClienteInterface {
         }
         if(cliente.getEnderecoCliente().isEmpty()){
         throw new Exception("Endereço vazio" + ExceptionMessageCliente.CPF_CLIENTE_VAZIO);
+        }
+        if(cliente.getEnderecoCliente().length() != 40){
+        throw new Exception("Endereço vazio" + ExceptionMessageCliente.ENDERECO_CLIENTE_TAMANHO);
         }
         return true;
     } 

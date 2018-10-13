@@ -135,6 +135,7 @@ public class ClienteRepositorio implements CrudClienteInterface{
          java.sql.Connection connection =  conexao.Conectar();
          
          String sql = "Select * From cliente WHERE nomeCliente = ? ";
+         
          PreparedStatement preparedstatement = connection.prepareStatement(sql);
          
          preparedstatement.setString(1, cliente.getNomeCliente());

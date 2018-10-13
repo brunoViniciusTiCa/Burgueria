@@ -45,4 +45,29 @@ public class ClienteFachada {
         return clientenegocio.select();
         
     }
+    
+    public boolean selectByNomeCliente(Cliente cliente) throws Exception{
+      clientenegocio = new ClienteNegocio();
+      clientenegocio.selectByNomeCliente(cliente);
+      
+      return true;
+      
+    }
+    
+    public boolean selectByCpfCliente(Cliente cliente) throws Exception{
+      
+      clientenegocio = new ClienteNegocio();
+      clientenegocio.selectByCpfCliente(cliente);
+      
+      return true;
+    
+    }
+    
+    public boolean isCpfExistenteCliente(Cliente cliente) throws Exception {
+    
+      clientenegocio = new ClienteNegocio();
+      clientenegocio.isCpfExistente(cliente);
+      
+      return true;
+    }
 }

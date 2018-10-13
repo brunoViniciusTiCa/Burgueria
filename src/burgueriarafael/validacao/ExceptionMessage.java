@@ -33,11 +33,12 @@ public interface ExceptionMessage {
       
          public final static String TELEFONE_CLIENTE_TAMANHO = "Verificar o tamanho do telefone do cliente!";
          
+         
          public final static String ENDERECO_CLIENTE_NULL = "Verificar o telefone do cliente, algo está errado. Endereço nulo.";
          
          public final static String ENDERECO_CLIENTE_VAZIO = "Verificar o telefone do cliente, algo está errado. Endereço vazio.";
          
-      
+        public final static String ENDERECO_CLIENTE_TAMANHO = "Endereço invalido do cliente, tamanhão do endereço invalido.";
          
          
          
@@ -63,16 +64,48 @@ public interface ExceptionMessage {
     
          public final static String  ID_FUNCIONARIO_NULL_VAZIO = "Id nulo ou vazio, Verifique ao certo a numeração do Id";
          
-         public final static String CPF_NULL_OU_VAZIO = "Cpf nulo ou vazaio, verifique se foi inserido da maneira correta!";
+         public final static String CPF_FUNCIONARIO_NULL = "Cpf nulo, verifique se foi inserido da maneira correta!";
          
-         public final static String TELEFONE_NULL_OU_VAZIO = "Telefone nulo ou vazio,verifique se foi inserido de maneira correta!";
+         public final static String CPF_FUNCIONARIO_VAZIO = "Cpf Vazio, verifique se foi inserido da maneira correta!";
          
-         public final static String ENDERECO_NULL_OU_VAZIO = "Endereço nulo ou vazio, verifique se foi inserido de maneira correta";
+         public final static String CPF_FUNCIONARIO_TAMANHO = "Tamanhão do Cpf invalido, Tamanhão autorizado com 11 digitos!";
+         
+         
+         
+         public final static String TELEFONE_FUNCIONARIO_NULL = "Telefone nulo,verifique se foi inserido de maneira correta!";
+         
+         public final static String TELEFONE_FUNCIONARIO_VAZIO = "Telefone vazio,verifique se foi inserido de maneira correta!";
+         
+         public final static String TELEFONE_FUNCIONARIO_TAMANHAO = "Tamanhão do Telefone invalido, Tamanhão autorizado com 11 digitos!";
+         
+         
+         public final static String ENDERECO_FUNCIONAR_NULL = "Endereço nulo, verifique se foi inserido de maneira correta!";
+         
+         public final static String ENDERCO_FUNCIOANARIO_VAZIO = "Endereço vazio,verifique se foi inserido de maneira correta! ";
+         
+         public final static String ENDERCO_FUNCIOANARIO_TAMANHO = "Tamanhão do Endereço invalido, Tamanhão autorizado com 40 digitos! ";
+         
+         
     
-         public final static String NOME_NULL_OU_VAZIO = "Nome nulo ou vazio, verifique se foi inserido de mandeira correta.";
+         public final static String NOME_FUNCIONARIO_NULL = "Nome nulo, verifique se foi inserido de mandeira correta.";
          
-         public final static String SEXO_NULL_OU_VAZIO = "Sexo nulo ou vazio, verifique se foi inserido de maneira correta.";
+         public final static String NOME_FUNCIONARIO_VAZIO = "Nome vazio, verifique se foi inserido de mandeira correta.";
+         
+         public final static String NOME_FUNCIONARIO_TAMANHO = "Tamanhão do nome do funcionario invalido, Tamanhão autorizado com 40 digitos!";
+         
+         
+         
+         public final static String SEXO_FUNCIONARIO_NULL = "Sexo nulo, verifique se foi inserido de maneira correta.";
+    
+         public final static String SEXO_FUNCIONARIO_VAZIO= "Sexo vazio, verifique se foi inserido de maneira correta.";
+         
+         public final static String SEXO_FUNCIONARIO_TAMANHO  = "Tamanhão do nome do funcionario invalido, Tamanhão autorizado com 1 digitos!";
+    
     }
+    
+    
+    
+    
     public interface ExceptionMessageNotaFiscal{
          
          public final static String  IDNF_NULL_OU_VAZIO = "Id nulo ou vazio, Verifique ao certo a numeração do Id";
@@ -85,7 +118,15 @@ public interface ExceptionMessage {
     
     public interface ExceptionMessagePedido{
         
-         public final static String IDPEDIDO_NULL_OU_VAZIO = "IdPedido nulo ou vazio,verifique se foi inserido de maneira correta!";
+         public final static String ITENS_PEDIDO_NULL = "Itens nulo,verifique se foi inserido de maneira correta!";
+         
+         public final static String ITENS_PEDIDO_VAZIO  = "Itens vazio,verifique se foi inserido de maneira correta!";
+         
+         public final static String STATUS_PEDIDO_VAZIO  = "Status vazio,verifique se foi inserido de maneira correta!";
+         
+         public final static String STATUS_PEDIDO_NULO  = "Status nulo,verifique se foi inserido de maneira correta!";
+         
+         
          
          public final static String VALOR_NULL_OU_VAZIO = "Valor Pedido nulo ou vazio, verifique se foi inserido de maneira correta.";
     
@@ -96,14 +137,13 @@ public interface ExceptionMessage {
     }
     public interface ExceptionMessageProduto{
         
-         public final static String ID_PRODUTO_NULL_OU_VAZIO = "IdPedido nulo ou vazio,verifique se foi inserido de maneira correta!";
+         public final static String NOME_PRODUTO_NULL = "Nome nulo,verifique se foi inserido de maneira correta!";
          
-         public final static String DATA_PRODUTO_NULL_OU_VAZIO  = "Data do Produto nulo ou vazio, verifique se foi inserido de maneira correta.";
+         public final static String NOME_PRODUTO_VAZIO = "Nome vazio,verifique se foi inserido de maneira correta!";
          
-         public final static String DESCRICAO_PRODUTO_NULL_OU_VAZIO = "Descrição do Produto nulo ou vazio, verifique se foi inserido de maneira correta";
-      
-         public final static String ENDERECO_NULL_OU_VAZIO = "Status do Produto nulo ou vazio, verifique se foi inserido de maneira correta";
+         public final static String DESCRICAO_PRODUTO_NULL = "Descrição nula,verifique se foi inserido de maneira correta!";
          
-         public final static String NOME_NULL_INVALIDO_OU_VAZIO = "Hora do Produto nulo ou vazio, verifique se foi inserido de maneira correta";
+         public final static String DESCRICAO_PRODUTO_VAZIO = "Descrição vazia,verifique se foi inserido de maneira correta!";
+         
     }
 }

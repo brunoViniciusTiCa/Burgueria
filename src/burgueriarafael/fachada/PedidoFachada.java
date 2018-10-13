@@ -5,10 +5,46 @@
  */
 package burgueriarafael.fachada;
 
+import burgueriarafael.basica.Pedido;
+import burgueriarafael.negocio.PedidoNegocio;
+import java.util.List;
+
 /**
  *
  * @author BrunoTiCaVini
  */
 public class PedidoFachada {
     
+    PedidoNegocio pedidonegocio = null;
+    
+    public boolean salvarPedido(Pedido pedido) throws Exception{
+      
+        pedidonegocio = new PedidoNegocio();
+        pedidonegocio.insert(pedido);
+    
+        return true;
+    }
+    
+    public boolean alterarPedido(Pedido pedido) throws Exception{
+      
+        pedidonegocio = new PedidoNegocio();
+        pedidonegocio.update(pedido);
+        
+        return true;
+    }
+    
+    public boolean deletarPedido(Pedido pedido) throws Exception{
+     
+        pedidonegocio = new PedidoNegocio();
+        pedidonegocio.delete(pedido);
+    
+        return true;
+    }
+    
+    public List<Pedido> consultarPedido() throws Exception{
+    
+        pedidonegocio = new PedidoNegocio();
+        return pedidonegocio.select();
+    
+    }
 }

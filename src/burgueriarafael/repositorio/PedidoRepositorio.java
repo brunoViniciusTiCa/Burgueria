@@ -38,7 +38,7 @@ public class PedidoRepositorio implements CrudPedidoInterface {
          
          preparedstatement.setString(1, pedido.getItemsPedido());
          preparedstatement.setString(2, pedido.getStatusDoPedido());
-         preparedstatement.setDouble(3, pedido.getValorProduto());
+         preparedstatement.setDouble(3, pedido.getProduto().getValorProduto());
          
          preparedstatement.executeUpdate();
         
@@ -62,7 +62,7 @@ public class PedidoRepositorio implements CrudPedidoInterface {
          
          preparedstatement.setString(1, pedido.getItemsPedido());
          preparedstatement.setString(2, pedido.getStatusDoPedido());
-         preparedstatement.setDouble(3, pedido.getValorProduto());
+         preparedstatement.setDouble(3, pedido.getProduto().getValorProduto());
          preparedstatement.setInt(4, pedido.getIdPedido());
          
          preparedstatement.executeUpdate();
@@ -116,7 +116,7 @@ public class PedidoRepositorio implements CrudPedidoInterface {
 
             p.setItemsPedido(resultPedido.getString("statusDoPedido"));
 
-            p.setValorProduto(resultPedido.getDouble("valorProduto"));
+            p.getProduto().setValorProduto(resultPedido.getDouble("valorProduto"));
             
             Pedido.add(p);
 
