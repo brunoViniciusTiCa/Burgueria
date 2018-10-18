@@ -44,13 +44,15 @@ public class FuncionarioNegocio implements CrudFuncionarioInterface{
         return funcionarioRepositorio.select();
     }
 
-    @Override
-    public List<Funcionario> selectByIdFuncionario(Funcionario funcionario) throws SQLException, Exception {
-        return funcionarioRepositorio.selectByIdFuncionario(funcionario);
+      @Override
+    public List<Funcionario> selectByCPFFuncionario(Funcionario funcionario) throws SQLException, Exception {
+        validarCpfFuncionario(funcionario);
+        return funcionarioRepositorio.selectByCPFFuncionario(funcionario);
     }
 
     @Override
     public List<Funcionario> selectByNomeFuncionario(Funcionario funcionario) throws SQLException, Exception {
+        validarNomeFuncionario(funcionario);
         return funcionarioRepositorio.selectByNomeFuncionario(funcionario);
     }
     
@@ -125,6 +127,8 @@ public class FuncionarioNegocio implements CrudFuncionarioInterface{
     
         return true;
     }
+
+  
     
     
     

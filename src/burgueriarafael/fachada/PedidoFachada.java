@@ -41,10 +41,11 @@ public class PedidoFachada {
         return true;
     }
     
-    public List<Pedido> consultarPedido() throws Exception{
+    public List<Pedido> select(Pedido pedido) throws Exception {
     
         pedidonegocio = new PedidoNegocio();
         return pedidonegocio.select();
+    
     
     }
 }

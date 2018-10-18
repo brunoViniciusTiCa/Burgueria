@@ -23,8 +23,6 @@ public interface CrudProdutoInterface {
     
     public List<Produto> select() throws SQLException, Exception;
     
-    public List<Produto> selectByIdProduto(Produto produto) throws SQLException, Exception;
-    
     public List<Produto> selectByNomeProduto(Produto produto) throws SQLException, Exception;
     
 }

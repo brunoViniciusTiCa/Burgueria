@@ -50,7 +50,7 @@ public class FuncionarioFachada {
     public boolean selectByIdFuncionario (Funcionario funcionario) throws Exception {
     
        funcionarionegocio = new FuncionarioNegocio();
-       funcionarionegocio.selectByIdFuncionario(funcionario);
+       //funcionarionegocio.selectByIdFuncionario(funcionario);
         
         return true;
     }

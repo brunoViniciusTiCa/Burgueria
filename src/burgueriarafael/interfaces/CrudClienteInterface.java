@@ -26,4 +26,6 @@ public interface CrudClienteInterface {
     public List<Cliente> selectByNomeCliente(Cliente cliente)throws SQLException, Exception;
     
      public List<Cliente> selectByCpfCliente(Cliente cliente)throws SQLException, Exception;
+     
+     
 }

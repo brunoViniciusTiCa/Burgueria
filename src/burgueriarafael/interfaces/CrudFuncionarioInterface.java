@@ -23,8 +23,9 @@ public interface CrudFuncionarioInterface {
     
     public List<Funcionario> select() throws SQLException, Exception;
     
-    public List<Funcionario> selectByIdFuncionario(Funcionario funcionario) throws SQLException, Exception;
-    
     public List<Funcionario> selectByNomeFuncionario(Funcionario funcionario) throws SQLException, Exception;
+    
+    public List<Funcionario> selectByCPFFuncionario(Funcionario funcionario) throws SQLException, Exception;
+    
     
 }

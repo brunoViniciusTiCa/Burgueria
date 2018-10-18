@@ -142,57 +142,7 @@ public class NotaFiscalRepositorio implements CrudNotaFiscalInterface{
         return NotaFiscais;
     }
 
-    @Override
-    public List<NotaFiscal> selectById(NotaFiscal notafiscal) throws SQLException, Exception {
-        
-        List<NotaFiscal> NotaFiscais = new ArrayList<>();
-
-        conexao = Conexao.getInstance();
-
-        java.sql.Connection connection = conexao.Conectar();
-
-        String sql = "SELECT * FROM notafiscal WHERE idNF = ? ";
-
-        PreparedStatement preparedStatement = connection.prepareStatement(sql);
-        
-        preparedStatement.setInt(1, notafiscal.getIdNf());
-       
-        ResultSet resultNotaFiscal = preparedStatement.executeQuery();
-       
-    while (resultNotaFiscal.next()) {
-
-            NotaFiscal nf = new NotaFiscal();
-
-            nf.setIdNf(resultNotaFiscal.getInt("idNf")); 
-            
-            nf.setHoraData(resultNotaFiscal.getTimestamp("horaData"));
-            
-            nf.setValorProduto(resultNotaFiscal.getDouble("valorProduto"));
-            
-            nf.setNomeProduto(resultNotaFiscal.getString("nomeProduto"));
-            
-            nf.setQuantidadeProduto(resultNotaFiscal.getInt("quantidadeProduto"));   
-            
-            nf.setNomeProduto(resultNotaFiscal.getString("nomeProduto"));
-            
-            nf.getCliente().setIdCliente(resultNotaFiscal.getInt("idCliente"));
-            
-            nf.getProduto().setIdProduto(resultNotaFiscal.getInt("idProduto"));
-            
-            nf.getPedido().setIdPedido(resultNotaFiscal.getInt("idPedido"));
-            
-            nf.getFuncionario().setIdFuncionario(resultNotaFiscal.getInt("idFuncionario"));
-            
-            NotaFiscais.add(nf);
-            
-            preparedStatement.execute();
-
-        }
-        conexao.Desconectar();
-
-        return NotaFiscais;
-    }
-
+   
     @Override
     public List<NotaFiscal> selectByData(NotaFiscal notafiscal) throws SQLException, Exception {
          List<NotaFiscal> NotaFiscais = new ArrayList<>();
@@ -241,6 +191,160 @@ public class NotaFiscalRepositorio implements CrudNotaFiscalInterface{
         conexao.Desconectar();
 
         return NotaFiscais;
+    }
+
+    @Override
+    public List<NotaFiscal> selectValortotal(NotaFiscal notafiscal) throws SQLException, Exception {
+        List<NotaFiscal> NotaFiscais = new ArrayList<>();
+
+        conexao = Conexao.getInstance();
+
+        java.sql.Connection connection = conexao.Conectar();
+
+        String sql = "SELECT * FROM notafiscal WHERE valorTotal = ? ";
+
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        
+        preparedStatement.setDouble(1, notafiscal.getValorTotal());
+        
+        ResultSet resultNotaFiscal = preparedStatement.executeQuery();
+       
+        while (resultNotaFiscal.next()) {
+
+            NotaFiscal nf = new NotaFiscal();
+
+            nf.setIdNf(resultNotaFiscal.getInt("idNf")); 
+            
+            nf.setHoraData(resultNotaFiscal.getTimestamp("horaData"));
+            
+            nf.setValorProduto(resultNotaFiscal.getDouble("valorProduto"));
+            
+            nf.setNomeProduto(resultNotaFiscal.getString("nomeProduto"));
+            
+            nf.setQuantidadeProduto(resultNotaFiscal.getInt("quantidadeProduto"));   
+            
+            nf.setNomeProduto(resultNotaFiscal.getString("nomeProduto"));
+            
+            nf.getCliente().setIdCliente(resultNotaFiscal.getInt("idCliente"));
+            
+            nf.getProduto().setIdProduto(resultNotaFiscal.getInt("idProduto"));
+            
+            nf.getPedido().setIdPedido(resultNotaFiscal.getInt("idPedido"));
+            
+            nf.getFuncionario().setIdFuncionario(resultNotaFiscal.getInt("idFuncionario"));
+            
+            NotaFiscais.add(nf);
+            
+            preparedStatement.execute();
+
+        }
+        conexao.Desconectar();
+
+        return NotaFiscais;
+        
+    }
+
+    @Override
+    public List<NotaFiscal> selectNomeCliente(NotaFiscal notafiscal) throws SQLException, Exception {
+        
+        List<NotaFiscal> NotaFiscais = new ArrayList<>();
+
+        conexao = Conexao.getInstance();
+
+        java.sql.Connection connection = conexao.Conectar();
+
+        String sql = "SELECT * FROM notafiscal WHERE idCliente = ? ";
+
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        
+        preparedStatement.setString(1, notafiscal.getCliente().getNomeCliente());
+        
+        ResultSet resultNotaFiscal = preparedStatement.executeQuery();
+       
+        while (resultNotaFiscal.next()) {
+
+            NotaFiscal nf = new NotaFiscal();
+
+            nf.setIdNf(resultNotaFiscal.getInt("idNf")); 
+            
+            nf.setHoraData(resultNotaFiscal.getTimestamp("horaData"));
+            
+            nf.setValorProduto(resultNotaFiscal.getDouble("valorProduto"));
+            
+            nf.setNomeProduto(resultNotaFiscal.getString("nomeProduto"));
+            
+            nf.setQuantidadeProduto(resultNotaFiscal.getInt("quantidadeProduto"));   
+            
+            nf.setNomeProduto(resultNotaFiscal.getString("nomeProduto"));
+            
+            nf.getCliente().setIdCliente(resultNotaFiscal.getInt("idCliente"));
+            
+            nf.getProduto().setIdProduto(resultNotaFiscal.getInt("idProduto"));
+            
+            nf.getPedido().setIdPedido(resultNotaFiscal.getInt("idPedido"));
+            
+            nf.getFuncionario().setIdFuncionario(resultNotaFiscal.getInt("idFuncionario"));
+            
+            NotaFiscais.add(nf);
+            
+            preparedStatement.execute();
+
+        }
+        conexao.Desconectar();
+
+        return NotaFiscais;
+        
+    }
+
+    @Override
+    public List<NotaFiscal> selectNomeFuncionario(NotaFiscal notafiscal) throws SQLException, Exception {
+      
+          List<NotaFiscal> NotaFiscais = new ArrayList<>();
+
+        conexao = Conexao.getInstance();
+
+        java.sql.Connection connection = conexao.Conectar();
+
+        String sql = "SELECT * FROM notafiscal WHERE idFuncionario = ? ";
+
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        
+        preparedStatement.setString(1, notafiscal.getFuncionario().getNomeFuncionario());
+        
+        ResultSet resultNotaFiscal = preparedStatement.executeQuery();
+       
+        while (resultNotaFiscal.next()) {
+
+            NotaFiscal nf = new NotaFiscal();
+
+            nf.setIdNf(resultNotaFiscal.getInt("idNf")); 
+            
+            nf.setHoraData(resultNotaFiscal.getTimestamp("horaData"));
+            
+            nf.setValorProduto(resultNotaFiscal.getDouble("valorProduto"));
+            
+            nf.setNomeProduto(resultNotaFiscal.getString("nomeProduto"));
+            
+            nf.setQuantidadeProduto(resultNotaFiscal.getInt("quantidadeProduto"));   
+            
+            nf.setNomeProduto(resultNotaFiscal.getString("nomeProduto"));
+            
+            nf.getCliente().setIdCliente(resultNotaFiscal.getInt("idCliente"));
+            
+            nf.getProduto().setIdProduto(resultNotaFiscal.getInt("idProduto"));
+            
+            nf.getPedido().setIdPedido(resultNotaFiscal.getInt("idPedido"));
+            
+            nf.getFuncionario().setIdFuncionario(resultNotaFiscal.getInt("idFuncionario"));
+            
+            NotaFiscais.add(nf);
+            
+            preparedStatement.execute();
+
+        }
+        conexao.Desconectar();
+
+        return NotaFiscais;        
     }
  }
     

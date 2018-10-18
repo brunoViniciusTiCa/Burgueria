@@ -128,43 +128,7 @@ public class ProdutoRepositorio implements CrudProdutoInterface{
 
     }
 
-    @Override
-    public List<Produto> selectByIdProduto(Produto produto) throws SQLException, Exception {
-        
-        List<Produto> Produtos = new ArrayList<>();
-
-        conexao = Conexao.getInstance();
-
-        java.sql.Connection connection = conexao.Conectar();
-
-        String sql = "SELECT * FROM produto WHERE idProduto = ? ";
-
-        PreparedStatement preparedStatement = connection.prepareStatement(sql);
-        
-        preparedStatement.setInt(1, produto.getIdProduto());
-
-        ResultSet resultProduto = preparedStatement.executeQuery();
-
-        while (resultProduto.next()) {
-
-           Produto p = new Produto();
-
-            p.setIdProduto(resultProduto.getInt("idProduto"));  
-
-            p.setValorProduto(resultProduto.getDouble("valorProduto"));
-
-            p.setNomeProduto(resultProduto.getString("nomeProduto"));
-
-            p.setDescricaoProduto(resultProduto.getString("descricaoProduto"));
-            
-            Produtos.add(p);
-
-        }
-        conexao.Desconectar();
-       
-        return Produtos;
-    }
-
+   
     @Override
     public List<Produto> selectByNomeProduto(Produto produto) throws SQLException, Exception {
       

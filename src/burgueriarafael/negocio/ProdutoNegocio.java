@@ -45,16 +45,12 @@ public class ProdutoNegocio implements CrudProdutoInterface{
     }
 
     @Override
-    public List<Produto> selectByIdProduto(Produto produto) throws SQLException, Exception {
-        return produtorepositorio.selectByIdProduto(produto);
-    }
-
-    @Override
     public List<Produto> selectByNomeProduto(Produto produto) throws SQLException, Exception {
+        nomeProduto(produto);
         return produtorepositorio.selectByNomeProduto(produto);
     }
     
-   public boolean nomeProduto(Produto produto) throws Exception{
+    public boolean nomeProduto(Produto produto) throws Exception{
       
        if(produto.getNomeProduto() == null){
        throw new Exception("Nome nulo" + ExceptionMessageProduto.NOME_PRODUTO_NULL);
@@ -63,6 +59,13 @@ public class ProdutoNegocio implements CrudProdutoInterface{
        throw new Exception("Nome vazio" + ExceptionMessageProduto.NOME_PRODUTO_VAZIO);
        }
        return true;
+   }
+   
+   public boolean valorProduto(Produto produto) throws Exception{
+    if(produto.getValorProduto() <= 0){
+    throw new Exception("Valor menor que zero" + ExceptionMessageProduto.VALOR_PRODUTO_MENOR_ZERO);
+    }
+   return true;
    }
  
    public boolean descricaoProduto(Produto produto) throws Exception{

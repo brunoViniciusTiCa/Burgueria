@@ -125,19 +125,18 @@ public class FuncionarioRepositorio implements CrudFuncionarioInterface{
     }
 
     @Override
-    public List<Funcionario> selectByIdFuncionario(Funcionario funcionario) throws SQLException, Exception {
-       
-        List<Funcionario> Funcionarios = new ArrayList<>();
+    public List<Funcionario> selectByNomeFuncionario(Funcionario funcionario) throws SQLException, Exception {
+       List<Funcionario> Funcionarios = new ArrayList<>();
        
         conexao = Conexao.getInstance();
        
         java.sql.Connection connection = conexao.Conectar();
         
-        String sql = "Select * from Funcionario WHERE idFuncionario = ? ";
+        String sql = "Select * from Funcionario WHERE nomeFuncionario = ? ";
         
         PreparedStatement preparedstatement = connection.prepareStatement(sql);
         
-        preparedstatement.setInt(1, funcionario.getIdFuncionario());
+        preparedstatement.setString(1, funcionario.getNomeFuncionario());
 
         ResultSet resultFuncionario = preparedstatement.executeQuery();
         
@@ -158,16 +157,16 @@ public class FuncionarioRepositorio implements CrudFuncionarioInterface{
         conexao.Desconectar();
         return Funcionarios;
     }
-
-    @Override
-    public List<Funcionario> selectByNomeFuncionario(Funcionario funcionario) throws SQLException, Exception {
+    
+        @Override
+    public List<Funcionario> selectByCPFFuncionario(Funcionario funcionario) throws SQLException, Exception {
        List<Funcionario> Funcionarios = new ArrayList<>();
        
         conexao = Conexao.getInstance();
        
         java.sql.Connection connection = conexao.Conectar();
         
-        String sql = "Select * from Funcionario WHERE nomeFuncionario = ? ";
+        String sql = "Select * from Funcionario WHERE cpfFuncionario = ? ";
         
         PreparedStatement preparedstatement = connection.prepareStatement(sql);
         

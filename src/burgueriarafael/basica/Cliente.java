@@ -16,7 +16,7 @@ public class Cliente {
                    sexoClient CHAR(1) DEFAULT('M'));
     */
     
-    private int idCliente;
+    private int    idCliente;
     private String cpfCliente;
     private String telefoneCliente;
     private String enderecoCliente;

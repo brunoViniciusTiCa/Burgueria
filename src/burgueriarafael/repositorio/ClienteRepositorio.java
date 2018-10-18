@@ -210,33 +210,6 @@ public class ClienteRepositorio implements CrudClienteInterface{
         conexao.Desconectar();
         return exists;
     }
-    
-    public boolean isIdCliente(Cliente cliente) throws SQLException, Exception{
-        boolean exists = false;
-        conexao = Conexao.getInstance();
-        Connection connection = conexao.Conectar();
-        
-        String sql = "SELECT cpf FROM cliente WHERE idCliente = ?";
-        PreparedStatement preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setInt(1, cliente.getIdCliente());
-        
-        ResultSet resultCliente = preparedStatement.executeQuery();
-        if (resultCliente.next()) {
-            if (resultCliente.getString("idCliente") != null) {
-                exists = true;
-            }
-        }
-        return exists;
-    }
-
-  
-
-  
-    
-    
-
-   
-
 }
     
 
