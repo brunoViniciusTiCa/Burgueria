@@ -43,6 +43,7 @@ public class FuncionarioRepositorio implements CrudFuncionarioInterface{
         preparedStatement.executeUpdate();        
         
         conexao.Desconectar();
+        
         return true;
         
     }

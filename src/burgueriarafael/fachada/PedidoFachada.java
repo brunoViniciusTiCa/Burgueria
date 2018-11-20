@@ -41,7 +41,7 @@ public class PedidoFachada {
         return true;
     }
     
-    public List<Pedido> select(Pedido pedido) throws Exception {
+    public List<Pedido> select() throws Exception {
     
         pedidonegocio = new PedidoNegocio();
         return pedidonegocio.select();

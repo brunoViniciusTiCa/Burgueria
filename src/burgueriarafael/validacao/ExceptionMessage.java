@@ -98,21 +98,16 @@ public interface ExceptionMessage {
     
     public interface ExceptionMessagePedido{
         
-         public final static String ITENS_PEDIDO_NULL = "Itens nulo,verifique se foi inserido de maneira correta!";
-         
-         public final static String ITENS_PEDIDO_VAZIO  = "Itens vazio,verifique se foi inserido de maneira correta!";
-         
          public final static String STATUS_PEDIDO_VAZIO  = "Status vazio,verifique se foi inserido de maneira correta!";
          
          public final static String STATUS_PEDIDO_NULO  = "Status nulo,verifique se foi inserido de maneira correta!";
          
+         public final static String STATUS_PEDIDO_SÓ  = "Só pode Salvar com ABERTO ou FECHADO!";
          
-         
-         public final static String VALOR_NULL_OU_VAZIO = "Valor Pedido nulo ou vazio, verifique se foi inserido de maneira correta.";
+         public final static String QTD_PRODUTO_NUMERO = "Só podemos cadastrar números aqui!";
     
-         public final static String NOMEPEDIDO_NULL_OU_VAZIO = "Nome nulo ou vazio, verifique se foi inserido de mandeira correta.";
          
-         public final static String DESCRICAO_NULL_OU_VAZIO = "Descrição do pedido nulo ou vazio, verifique se foi inserido de maneira correta.";
+       
     
     }
     public interface ExceptionMessageProduto{
@@ -126,5 +121,8 @@ public interface ExceptionMessage {
          public final static String DESCRICAO_PRODUTO_VAZIO = "Descrição vazia,verifique se foi inserido de maneira correta!";
          
          public final static String VALOR_PRODUTO_MENOR_ZERO = "Valor do produto menor que zero, não pode ser cadastrado!";
+         
+         public final static String QTD_PRODUTO_ACABANDO = "Produto não pode ser cadastrado com quantidade ZERO ou quantidade NEGATIVA!";
+         
     }
 }

@@ -30,7 +30,7 @@ public class ProdutoRepositorio implements CrudProdutoInterface{
         
         Connection connection = conexao.Conectar();
         
-        String sql = "INSERT INTO produto ( valorProduto, nomeProduto, descricaoProduto ) VALUES"
+        String sql = "INSERT INTO produto ( valorProduto, nomeProduto, descricaoProduto) VALUES"
                 + "(?,?,?)";
         
        PreparedStatement preparedstatement = connection.prepareStatement(sql);
@@ -119,6 +119,10 @@ public class ProdutoRepositorio implements CrudProdutoInterface{
 
             p.setDescricaoProduto(resultProduto.getString("descricaoProduto"));
             
+            
+            
+            
+            
             Produtos.add(p);
 
         }
@@ -157,6 +161,8 @@ public class ProdutoRepositorio implements CrudProdutoInterface{
             p.setNomeProduto(resultProduto.getString("nomeProduto"));
 
             p.setDescricaoProduto(resultProduto.getString("descricaoProduto"));
+            
+            
             
             Produtos.add(p);
 

@@ -131,7 +131,7 @@ public class ClienteNegocio implements CrudClienteInterface {
         if(cliente.getSexoCliente().length() != 1){
          throw new Exception("Sexo tamho excedente" + ExceptionMessageCliente.SEXO_CLIENTE_TAMANHO);
         }
-        if((cliente.getSexoCliente() != "M") || (cliente.getSexoCliente()!= "F")){
+        if((cliente.getSexoCliente() != "M") && (cliente.getSexoCliente()!= "F")){
          throw new Exception("sexo M ou F" + ExceptionMessageCliente.SEXO_CLIENTE_M_OU_F);
         }
         return true;

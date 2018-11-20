@@ -39,7 +39,7 @@ public class ProdutoFachada {
        return true;
     }
     
-    public List<Produto> select(Produto produto) throws Exception{
+    public List<Produto> consultarProduto() throws Exception{
       
         produtonegocio = new ProdutoNegocio();
         return produtonegocio.select();

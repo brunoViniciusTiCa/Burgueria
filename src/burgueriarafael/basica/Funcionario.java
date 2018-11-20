@@ -30,6 +30,8 @@ public class Funcionario {
     /**
      * @return the idFuncionario
      */
+   
+  
     public int getIdFuncionario() {
         return idFuncionario;
     }

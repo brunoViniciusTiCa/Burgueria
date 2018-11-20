@@ -23,17 +23,19 @@ public class PedidoNegocio implements CrudPedidoInterface{
     private final PedidoRepositorio pedidoRepositorio;
     
     public PedidoNegocio(){
-      pedidoRepositorio = new PedidoRepositorio();
+        pedidoRepositorio = new PedidoRepositorio();
     }
     
     @Override
     public boolean insert(Pedido pedido) throws SQLException, Exception {
+        statusDoPedido(pedido);
         return pedidoRepositorio.insert(pedido);
     }
 
     @Override
     public boolean update(Pedido pedido) throws SQLException, Exception {
-       return pedidoRepositorio.update(pedido);
+        statusDoPedido(pedido); 
+        return pedidoRepositorio.update(pedido);
     }
 
     @Override
@@ -46,33 +48,22 @@ public class PedidoNegocio implements CrudPedidoInterface{
 
     @Override
     public List<Pedido> select() throws SQLException, Exception {
+        
         return pedidoRepositorio.select();
     }
     
-   
-    
-    public boolean itensDoPedido(Pedido pedido) throws Exception{
-    
-        if(pedido.getItemsPedido() == null){
-        throw new Exception("Itens Nulo" + ExceptionMessagePedido.ITENS_PEDIDO_NULL);
-        }
-        if(pedido.getItemsPedido().isEmpty()){
-        throw new Exception("Itens vazio" + ExceptionMessagePedido.ITENS_PEDIDO_VAZIO);
-        }
-        return true;
-    }
-    
-    public boolean statusDoPedido(Pedido pedido) throws Exception{
+   public boolean statusDoPedido(Pedido pedido) throws Exception{
     
         if(pedido.getStatusDoPedido() == null){
-        throw new Exception("Status nulo" + ExceptionMessagePedido.STATUS_PEDIDO_VAZIO);    
+        throw new Exception("ATENÇÃO" + ExceptionMessagePedido.STATUS_PEDIDO_VAZIO);    
         }    
         if(pedido.getStatusDoPedido().isEmpty()){
-        throw new Exception("Status vazio" + ExceptionMessagePedido.STATUS_PEDIDO_NULO);
+        throw new Exception("ATENÇÃO" + ExceptionMessagePedido.STATUS_PEDIDO_NULO);
+        }
+        if((pedido.getStatusDoPedido()== "ABERTO") && (pedido.getStatusDoPedido() == "FECHADO")){
+        throw new Exception("ATENÇÂO: " + ExceptionMessagePedido.STATUS_PEDIDO_SÓ);
         }
         return true;
     }
    
-    
-    
 }

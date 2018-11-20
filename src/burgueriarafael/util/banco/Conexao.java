@@ -8,9 +8,8 @@ package burgueriarafael.util.banco;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.ResourceBundle;
 import burgueriarafael.interfaces.ConexaoInterface;
-import java.sql.PreparedStatement;
+
 
 /**
  *
@@ -25,10 +24,7 @@ public class Conexao implements ConexaoInterface{
     private Connection conexaoBd;
             
     
-    
-    
-   
-      public Conexao() {
+    public Conexao() {
         //ResourceBundle rb = ResourceBundle.getBundle("burgueriarafael.util.banco.configDB");
         URL_BD = "jdbc:mysql://localhost:3306/teste";
         USUARIO_BD = "root";
@@ -61,7 +57,4 @@ public class Conexao implements ConexaoInterface{
         }
     }
 
-   
-    
-    
 }

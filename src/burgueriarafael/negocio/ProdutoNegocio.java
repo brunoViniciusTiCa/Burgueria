@@ -26,7 +26,9 @@ public class ProdutoNegocio implements CrudProdutoInterface{
 
     @Override
     public boolean insert(Produto produto) throws SQLException, Exception {
-       return produtorepositorio.insert(produto);   
+        
+        validarCampos(produto);
+        return produtorepositorio.insert(produto);   
     }
 
     @Override
@@ -36,6 +38,7 @@ public class ProdutoNegocio implements CrudProdutoInterface{
 
     @Override
     public boolean delete(Produto produto) throws SQLException, Exception {
+        
         return produtorepositorio.delete(produto);
     }
 
@@ -53,17 +56,17 @@ public class ProdutoNegocio implements CrudProdutoInterface{
     public boolean nomeProduto(Produto produto) throws Exception{
       
        if(produto.getNomeProduto() == null){
-       throw new Exception("Nome nulo" + ExceptionMessageProduto.NOME_PRODUTO_NULL);
+       throw new Exception("Atenção: " + ExceptionMessageProduto.NOME_PRODUTO_NULL);
        }
        if(produto.getNomeProduto().isEmpty()){
-       throw new Exception("Nome vazio" + ExceptionMessageProduto.NOME_PRODUTO_VAZIO);
+       throw new Exception("Atenção: " + ExceptionMessageProduto.NOME_PRODUTO_VAZIO);
        }
        return true;
    }
    
    public boolean valorProduto(Produto produto) throws Exception{
     if(produto.getValorProduto() <= 0){
-    throw new Exception("Valor menor que zero" + ExceptionMessageProduto.VALOR_PRODUTO_MENOR_ZERO);
+    throw new Exception("Atenção: " + ExceptionMessageProduto.VALOR_PRODUTO_MENOR_ZERO);
     }
    return true;
    }
@@ -71,12 +74,21 @@ public class ProdutoNegocio implements CrudProdutoInterface{
    public boolean descricaoProduto(Produto produto) throws Exception{
    
        if(produto.getDescricaoProduto() == null){
-       throw new Exception("Descrição Nula" + ExceptionMessageProduto.DESCRICAO_PRODUTO_NULL);
+       throw new Exception("Atenção: " + ExceptionMessageProduto.DESCRICAO_PRODUTO_NULL);
        }
        if(produto.getDescricaoProduto().isEmpty()){
-       throw new Exception("Descrição Vazia" + ExceptionMessageProduto.DESCRICAO_PRODUTO_VAZIO);
+       throw new Exception("Atenção: " + ExceptionMessageProduto.DESCRICAO_PRODUTO_VAZIO);
        }
        
      return true;
+   }
+   
+   public void validarCampos(Produto produto) throws Exception{
+    
+       descricaoProduto(produto);
+       valorProduto(produto);
+       nomeProduto(produto);
+     
+   
    }
 }

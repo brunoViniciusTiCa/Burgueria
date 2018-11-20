@@ -12,12 +12,18 @@ import java.sql.Time;
  *
  * @author BrunoTiCaVini
  */
-public class Produto {
+public class Produto{ 
+    
+      /*CREATE TABLE Produto   (idProduto INTEGER PRIMARY KEY AUTO_INCREMENT,
+                                valorProduto DOUBLE NOT NULL,
+			        nomeProduto Varchar(40)NOT NULL,
+                                descricaoProduto VARCHAR(50) NOT NULL);*/
     
      private int idProduto;
      private double valorProduto;
      private String nomeProduto;
      private String descricaoProduto;
+     
 
     /**
      * @return the idProduto
@@ -75,10 +81,7 @@ public class Produto {
         this.descricaoProduto = descricaoProduto;
     }
     
-  /*CREATE TABLE Produto   (idProduto INTEGER PRIMARY KEY AUTO_INCREMENT,
-                            valorProduto DOUBLE NOT NULL,
-			    nomeProduto Varchar(40)NOT NULL,
-                            descricaoProduto VARCHAR(50) NOT NULL);*/
+
         
    
      

@@ -6,8 +6,8 @@ package burgueriarafael.basica;
  * @author BrunoTiCaVini
  */
 public class Cliente {
-    
-    /*
+
+      /*
     Table Cliente (idCliente INTEGER PRIMARY KEY,
                    cpfCliente VARCHAR(15) NOT NULL,
                    telefoneCliente VARCHAR(20) NOT NULL,
@@ -22,7 +22,7 @@ public class Cliente {
     private String enderecoCliente;
     private String nomeCliente;
     private String sexoCliente;
-
+    
     /**
      * @return the idCliente
      */
@@ -94,18 +94,22 @@ public class Cliente {
     }
 
     /**
-     * @return the sexoClient
+     * @return the sexoCliente
      */
     public String getSexoCliente() {
         return sexoCliente;
     }
 
     /**
-     * @param sexoCliente the sexoClient to set
+     * @param sexoCliente the sexoCliente to set
      */
     public void setSexoCliente(String sexoCliente) {
         this.sexoCliente = sexoCliente;
     }
+    
+  
+
+    
 
     
 }

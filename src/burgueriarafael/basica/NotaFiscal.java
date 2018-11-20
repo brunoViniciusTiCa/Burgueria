@@ -38,6 +38,15 @@ public class NotaFiscal {
     private Produto produto = new Produto();
     private Pedido pedido = new Pedido();
     private Funcionario funcionario = new Funcionario();
+    
+    NotaFiscal Nf = new NotaFiscal();
+    
+    
+    public String toString(){
+    
+       return "Nota Fiscal: " + this.Nf;
+        
+    }
 
     /**
      * @return the idNf

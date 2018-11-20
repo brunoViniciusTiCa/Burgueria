@@ -11,17 +11,33 @@ package burgueriarafael.basica;
  */
 public class Pedido {
     
-       
-      /*CREATE TABLE Pedido     (idPedido INTEGER PRIMARY KEY AUTO_INCREMENT,
-			       ItemsPedido VARCHAR(40) NOT NULL,
-			       StatusDoPedido VARCHAR(1)  CHECK (statusDoPedido = 'ABERTO' OR statusDoPedido = 'FECHADO') ,
-			       ValorProduto DECIMAL NOT NULL);*/
+           
+     /*CREATE TABLE Pedido     (idPedido INTEGER PRIMARY KEY AUTO_INCREMENT,
+				statusDoPedido VARCHAR(10)  CHECK (statusDoPedido = 'ABERTO' OR statusDoPedido = 'FECHADO') ,
+				valorProduto   DECIMAL NOT NULL,
+                                nomeProduto Varchar(40)NOT NULL,
+                                qtdProduto integer not null,
+                                idProduto integer references Produto(idProduto)); */
     
-    private int    idPedido;
-    private String itemsPedido;
-    private String statusDoPedido;
+    private int     idPedido;
+    private String  statusDoPedido;
+    private int     qtdProduto;
     private Produto produto = new Produto();
 
+    /**
+     * @return the qtdProduto
+     */
+    public int getQtdProduto() {
+        return qtdProduto;
+    }
+
+    /**
+     * @param qtdProduto the qtdProduto to set
+     */
+    public void setQtdProduto(int qtdProduto) {
+        this.qtdProduto = qtdProduto;
+    }
+    
     /**
      * @return the idPedido
      */
@@ -34,20 +50,6 @@ public class Pedido {
      */
     public void setIdPedido(int idPedido) {
         this.idPedido = idPedido;
-    }
-
-    /**
-     * @return the itemsPedido
-     */
-    public String getItemsPedido() {
-        return itemsPedido;
-    }
-
-    /**
-     * @param itemsPedido the itemsPedido to set
-     */
-    public void setItemsPedido(String itemsPedido) {
-        this.itemsPedido = itemsPedido;
     }
 
     /**
@@ -77,15 +79,5 @@ public class Pedido {
     public void setProduto(Produto produto) {
         this.produto = produto;
     }
-    
-    
-
- 
- 
-
-
-   
-    
-   
     
 }
